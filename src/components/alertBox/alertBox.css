@@ -1,0 +1,12 @@
+.alertBox {
+    @apply absolute w-10/12 h-40 bg-white rounded-md border border-slate-300 shadow-md z-[1012] p-4 pt-10;
+    transform: translateX(-50%) translateY(-50%);
+    top: 50%;
+    left: 50%;
+}
+.alertBox .wrapper {
+    @apply relative;
+}
+.alertBox .wrapper .xbutton {
+    @apply absolute -right-2 -top-8;
+}

@@ -1,0 +1,43 @@
+.map-control-buttons {
+    @apply absolute right-2 top-1/2 z-[1010];
+    transform: translateY(-50%);
+}
+.map-control-buttons .button-group {
+    @apply mb-1;
+}
+.map-control-buttons .button-group:last-child {
+    @apply mb-0;
+}
+.map-control-buttons .control-button {
+    @apply bg-white shadow-md rounded-md p-2 border border-slate-300 block;
+}
+.map-marker-wrapper {
+    @apply relative;
+}
+.map-marker {
+    @apply absolute right-2 left-1/2 top-1/2 z-[1010];
+    transform: translateX(-50%) translateY(-50%);
+}
+.map-marker.test {
+    @apply bg-red-600 w-6 h-6 rounded-full;
+}
+.map-marker .wrapper {
+    @apply relative;
+}
+.map-marker.cluster {
+    @apply p-2 whitespace-nowrap text-center w-max min-w-[0.75rem] h-3 bg-amber-400 border border-black rounded-full flex items-center justify-center;
+}
+.map-marker.normal .wrapper,
+.map-marker.current .wrapper {
+    @apply flex flex-col gap-y-1 items-center justify-center;
+}
+.map-marker.normal .badge {
+    @apply w-2 h-2 bg-sky-400 border border-white rounded-full;
+}
+.map-marker.current .badge {
+    @apply bg-red-500 border border-white rounded-full w-4 h-4 shadow-md;
+}
+.map-marker.normal .point-name,
+.map-marker.current .point-name {
+    @apply bg-white whitespace-nowrap text-center px-1 py-0.5 w-max min-w-[0.75rem] opacity-70;
+}

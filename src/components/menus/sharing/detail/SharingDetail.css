@@ -1,0 +1,220 @@
+.hide-sharing-detail-menu {
+    @apply hidden;
+}
+.sharing-detail-menu {
+    @apply relative;
+}
+.sharing-detail-menu .sharing-status-badge {
+    @apply absolute top-1 left-1 rounded-md text-white text-xs px-1 py-0.5;
+}
+.sharing-detail-menu .star-icon {
+    @apply absolute top-1 right-9 cursor-pointer;
+}
+.sharing-detail-menu .star-icon .icon {
+    @apply w-5 h-5;
+}
+.sharing-detail-menu .star-icon .icon.filled {
+    @apply text-amber-400;
+}
+.sharing-detail-menu .util-menu {
+    @apply absolute top-1 right-1 cursor-pointer;
+}
+.sharing-detail-menu .util-items {
+    @apply absolute top-6 right-1 bg-white rounded border border-slate-500 overflow-hidden z-[1010];
+}
+.sharing-detail-menu .util-items .util-item {
+    @apply border-b border-slate-500 text-center py-1 px-2 cursor-pointer;
+}
+.sharing-detail-menu .util-items .util-item:last-child {
+    @apply border-b-0;
+}
+.sharing-detail-menu .sharing-status-badge.type-0 {
+    @apply bg-green-500;
+}
+.sharing-detail-menu .sharing-status-badge.type-1 {
+    @apply bg-amber-400 text-black border border-black;
+}
+.sharing-detail-menu .sharing-status-badge.type-2 {
+    @apply bg-slate-400;
+}
+.sharing-detail-menu .sharing-status-badge.type-3 {
+    @apply bg-red-500;
+}
+.sharing-detail-menu .sharing-detail-menu-title {
+    @apply pt-8 text-2xl font-bold text-center w-full;
+}
+.sharing-detail-menu .sharing-detail-menu-title .edit-wrapper {
+    @apply flex flex-col items-start;
+}
+.sharing-detail-menu .sharing-detail-menu-title .sharing.warning .list-disc li {
+    @apply text-left;
+}
+.sharing-detail-menu .sharing-detail-menu-title .edit-title {
+    @apply flex flex-row text-sm items-center gap-x-1 w-full;
+}
+.sharing-detail-menu .sharing-detail-menu-title .edit-title .input-area {
+    @apply flex-1;
+}
+.sharing-detail-menu .sharing-detail-menu-title .edit-title .edit-util-menu {
+    @apply flex flex-row items-center justify-center gap-x-1;
+}
+.sharing-detail-menu
+    .sharing-detail-menu-title
+    .edit-title
+    .edit-util-menu
+    .util-button {
+    @apply text-xs rounded text-white px-2 py-1;
+}
+.sharing-detail-menu
+    .sharing-detail-menu-title
+    .edit-title
+    .edit-util-menu
+    .util-button.save {
+    @apply bg-green-500;
+}
+.sharing-detail-menu
+    .sharing-detail-menu-title
+    .edit-title
+    .edit-util-menu
+    .util-button.save:disabled {
+    @apply bg-slate-400;
+}
+.sharing-detail-menu
+    .sharing-detail-menu-title
+    .edit-title
+    .edit-util-menu
+    .util-button.cancel {
+    @apply bg-red-500;
+}
+.sharing-detail-menu .section {
+    @apply w-full mt-4 border border-slate-200 shadow bg-white p-2 rounded-md;
+}
+.sharing-detail-menu .section .header-block {
+    @apply relative flex flex-row items-center font-bold text-xl mb-2;
+}
+.sharing-detail-menu .section .header-block .util-menu {
+    @apply absolute top-1 right-1 cursor-pointer flex gap-x-1;
+}
+.sharing-detail-menu .section .header-block .util-menu .util-button {
+    @apply text-xs rounded text-white px-2 py-1;
+}
+.sharing-detail-menu .section .header-block .util-menu .util-button.save {
+    @apply bg-green-500;
+}
+.sharing-detail-menu
+    .section
+    .header-block
+    .util-menu
+    .util-button.save:disabled {
+    @apply bg-slate-400;
+}
+.sharing-detail-menu .section .header-block .util-menu .util-button.cancel {
+    @apply bg-red-500;
+}
+.sharing-detail-menu .section .tail-block .point-name {
+    @apply mb-0.5;
+}
+.sharing-detail-menu .section .tail-block .point-name .point-name-title {
+    @apply mr-1;
+}
+.sharing-detail-menu .section .tail-block .addresses {
+    @apply text-left mr-auto ml-auto;
+}
+.sharing-detail-menu .section .tail-block .point-name .addresses-title {
+    @apply mb-1;
+}
+.sharing-detail-menu .section .tail-block .addresses .wrapper-with-copy {
+    @apply flex flex-row items-center mb-1 cursor-pointer;
+}
+.sharing-detail-menu
+    .section
+    .tail-block
+    .addresses
+    .wrapper-with-copy
+    .address-text-area {
+    @apply flex-1;
+}
+.sharing-detail-menu .section .tail-block .addresses .wrapper-with-copy .badge {
+    @apply rounded px-0.5 text-white text-[0.6rem] mr-1 w-[32px] text-center;
+}
+.sharing-detail-menu
+    .section
+    .tail-block
+    .addresses
+    .wrapper-with-copy
+    .badge.jibun {
+    @apply bg-sky-400;
+}
+.sharing-detail-menu
+    .section
+    .tail-block
+    .addresses
+    .wrapper-with-copy
+    .badge.doro {
+    @apply bg-amber-400 text-black;
+}
+.sharing-detail-menu .section .tail-block .contacts .wrapper-with-copy {
+    @apply flex items-center justify-between cursor-pointer py-1 px-2 rounded-lg shadow border border-slate-200 mb-1;
+}
+.sharing-detail-menu
+    .section
+    .tail-block
+    .contacts
+    .wrapper-with-copy:last-child {
+    @apply mb-0;
+}
+.sharing-detail-menu .section .tail-block .share-goods .goods-line {
+    @apply flex items-center justify-between cursor-pointer py-1 px-2 rounded-lg shadow border border-slate-200 mb-1;
+}
+.sharing-detail-menu .section .tail-block .share-goods .goods-line .text {
+    @apply flex-1;
+}
+.sharing-detail-menu .section .tail-block .share-goods .goods-line .calculator {
+    @apply flex gap-x-1 items-center;
+}
+.sharing-detail-menu
+    .section
+    .tail-block
+    .share-goods
+    .goods-line
+    .calculator
+    input {
+    @apply rounded border border-slate-200 w-[60px] px-1;
+}
+.sharing-detail-menu
+    .section
+    .tail-block
+    .share-goods
+    .goods-line
+    .calculator
+    button {
+    @apply flex items-center justify-center border border-slate-200 shadow rounded w-[20px] h-[20px];
+}
+.sharing-detail-menu .section .tail-block .share-goods .goods-line.sold-out {
+    @apply bg-slate-400 opacity-70 line-through;
+}
+.sharing-detail-menu .section .tail-block .share-goods .goods-line:last-child {
+    @apply mb-0;
+}
+
+.share-detail-alert-box-content .text .strong {
+    @apply text-red-500;
+}
+.share-detail-alert-box-content .buttons {
+    @apply mt-6 w-full text-right text-sm;
+}
+.share-detail-alert-box-content .buttons button {
+    @apply px-2 py-0.5 rounded;
+}
+.share-detail-alert-box-content .buttons .back {
+    @apply bg-sky-500 text-white mr-1.5;
+}
+.share-detail-alert-box-content .buttons .delete {
+    @apply bg-red-500 text-white;
+}
+.share-detail-alert-box-content .buttons .stay {
+    @apply bg-amber-400 text-black border border-black mr-1.5 box-border;
+}
+.share-detail-alert-box-content .buttons .imme {
+    @apply bg-sky-500 text-white;
+}

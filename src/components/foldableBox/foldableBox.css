@@ -1,0 +1,8 @@
+.foldable-box {
+    @apply relative w-[24rem] max-w-[100vw] bg-white rounded-md border border-slate-300 shadow-md z-[1012] p-2 pt-9;
+}
+
+.foldable-box .fold-button {
+    @apply absolute left-1/2 top-2;
+    transform: translateX(-50%);
+}

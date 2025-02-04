@@ -1,0 +1,8 @@
+.icon-button .icon {
+    @apply absolute left-1/2 top-1/2 w-full;
+    transform: translateX(-50%) translateY(-50%);
+}
+
+.icon-button .icon img {
+    @apply mr-auto ml-auto;
+}

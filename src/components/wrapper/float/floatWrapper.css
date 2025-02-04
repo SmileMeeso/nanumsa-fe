@@ -1,0 +1,8 @@
+.float-wrapper {
+    @apply fixed top-0 left-0 z-[1000];
+}
+@media (max-width: 1024px) {
+    .float-wrapper {
+        @apply w-full;
+    }
+}

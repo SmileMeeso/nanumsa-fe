@@ -1,0 +1,4 @@
+.full-width-button-with-x-free .icon {
+    @apply absolute top-1/2;
+    transform: translateY(-50%);
+}

@@ -1,0 +1,3 @@
+.page-container-wrapper-body {
+    @apply p-2 pt-[56px] pb-0 overflow-scroll min-h-full;
+}

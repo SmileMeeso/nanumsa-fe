@@ -1,0 +1,12 @@
+.sharing-list-menu .search-input-area {
+    @apply mb-4;
+}
+.sharing-list-menu .search-input-area .check-input-area {
+    @apply flex flex-row gap-x-2 items-center mt-1;
+}
+.sharing-list-menu .search-input-area .check-input-area .check-input {
+    @apply flex items-center border-slate-500;
+}
+.sharing-list-menu .search-input-area .check-input-area .check-input input {
+    @apply mr-1;
+}

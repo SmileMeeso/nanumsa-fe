@@ -1,0 +1,4 @@
+.full-width-button .icon {
+    @apply absolute top-1/2 left-0;
+    transform: translateY(-50%);
+}

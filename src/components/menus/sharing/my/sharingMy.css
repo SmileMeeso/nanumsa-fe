@@ -1,0 +1,18 @@
+.sharing-my-menu .search-input-area {
+    @apply mb-4;
+}
+.sharing-my-menu .search-input-area .sharing-my-menu-title {
+    @apply text-lg;
+}
+.sharing-my-menu .search-input-area .sharing-my-menu-title .icon {
+    @apply text-rose-400 mr-0.5 w-6 h-6 inline-block;
+}
+.sharing-my-menu .search-input-area .check-input-area {
+    @apply flex flex-row gap-x-2 items-center mt-1;
+}
+.sharing-my-menu .search-input-area .check-input-area .check-input {
+    @apply flex items-center border-slate-500;
+}
+.sharing-my-menu .search-input-area .check-input-area .check-input input {
+    @apply mr-1;
+}

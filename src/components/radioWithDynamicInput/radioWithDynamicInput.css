@@ -1,0 +1,12 @@
+.radio-with-dynamic-radio-button ul {
+    @apply bg-white rounded-md border border-slate-300 mb-2;
+}
+.radio-with-dynamic-radio-button ul li {
+    @apply p-2 flex justify-start items-center;
+}
+.radio-with-dynamic-radio-button ul li:not(:last-child) {
+    @apply border-b border-slate-300;
+}
+.radio-with-dynamic-radio-button ul li input {
+    @apply mr-2;
+}

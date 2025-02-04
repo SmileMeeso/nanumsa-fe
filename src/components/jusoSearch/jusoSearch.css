@@ -1,0 +1,62 @@
+.address-search .search-result .list-item-group .list-item {
+    @apply px-2 flex justify-between items-center h-8 cursor-pointer border-b border-slate-100;
+}
+
+.address-search .search-info {
+    @apply flex justify-center items-center w-full h-16 mt-2 text-center p-4 bg-white border border-slate-300 rounded-md;
+}
+.address-search .search-result {
+    @apply w-full mt-2 bg-white border border-slate-300 rounded-md;
+}
+.address-search .search-result .title {
+    @apply border-b p-2 flex justify-between;
+}
+.address-search .search-result .title .wrapper {
+    @apply flex items-center;
+}
+.address-search .search-result .list-item-group {
+    @apply max-h-48 overflow-scroll;
+}
+.address-search .search-result .list-item-group .list-item {
+    @apply px-2 flex justify-between items-center h-8 cursor-pointer border-b border-slate-100;
+}
+.address-search .search-result .list-item-group .list-item-address {
+    @apply p-2 flex flex-col justify-start cursor-pointer border-b border-slate-100 relative;
+}
+
+.address-search .search-result .list-item-group .list-item-address .badge {
+    @apply h-4 w-[32px] text-center leading-4 mr-1 px-0.5 text-[0.6rem] font-bold rounded-sm border;
+}
+
+.address-search .search-result .list-item-group .list-item-address .line {
+    @apply flex text-sm items-center gap-x-1 pr-6;
+}
+.address-search .search-result .list-item-group .list-item-address .check-icon {
+    @apply absolute right-2 top-1/2;
+    transform: translateY(-50%);
+}
+
+.address-search .search-result .list-item-group .list-item:hover {
+    @apply bg-slate-100;
+}
+
+.address-search .search-result .list-item-group .list-item-address {
+    @apply p-2 flex flex-col justify-start cursor-pointer border-b border-slate-100 relative;
+}
+
+.address-search .search-result .list-item-group .list-item-address .badge {
+    @apply h-4 leading-4 mr-1 px-0.5 text-[0.6rem] font-bold rounded-sm border;
+}
+
+.address-search .search-result .list-item-group .list-item-address .line {
+    @apply flex text-sm items-center;
+}
+
+.address-search .search-result .list-item-group .list-item-address .check-icon {
+    @apply absolute right-2 top-1/2;
+    transform: translateY(-50%);
+}
+
+.address-search .search-result .list-item-group .list-item:hover {
+    @apply bg-slate-100;
+}

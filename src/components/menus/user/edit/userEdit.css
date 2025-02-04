@@ -1,0 +1,166 @@
+.user-edit-sub-menu {
+    @apply min-h-full relative;
+}
+.user-edit-sub-menu .rule-badge {
+    @apply inline-block ml-1 relative;
+}
+.user-edit-sub-menu .rule-badge .button {
+    @apply text-amber-400 flex flex-row items-center cursor-pointer;
+}
+.user-edit-sub-menu .rule-badge .button .icon {
+    @apply inline-block mr-0.5;
+}
+
+.user-edit-sub-menu .alert-box-content {
+    @apply relative h-full;
+}
+.user-edit-sub-menu .alert-box-content .buttons {
+    @apply absolute bottom-0 right-0 flex gap-x-2;
+}
+.user-edit-sub-menu .alert-box-content .buttons button {
+    @apply rounded py-1 px-2;
+}
+
+.user-edit-sub-menu .rule-badge .popup {
+    @apply absolute font-normal left-1/2 top-full z-[1001] w-60 p-2 rounded border shadow-sm bg-slate-50 text-slate-900;
+    transform: translateX(-50%);
+}
+
+.user-edit-sub-menu .rule-badge .popup .close-button-wapper {
+    @apply relative;
+}
+
+.user-edit-sub-menu .rule-badge .popup .close-button-wapper button {
+    @apply absolute right-0 top-0 cursor-pointer;
+}
+
+.user-edit-sub-menu .rule-badge .popup .close-button-wapper button .icon {
+    @apply w-4 h-4;
+}
+
+.user-edit-sub-menu .title {
+    @apply font-bold text-lg mb-4;
+}
+.user-edit-sub-menu .form-area .form-title {
+    @apply pb-2 flex flex-row items-center;
+}
+
+.user-edit-sub-menu .form-area .form-content {
+    @apply p-2 bg-slate-200 rounded h-full;
+}
+
+.user-edit-sub-menu .form-area .form-content .input-area {
+    @apply w-full mt-1;
+}
+
+.user-edit-sub-menu .form-area .form-content .input-with-button {
+    @apply flex flex-row items-center gap-x-2;
+}
+
+.user-edit-sub-menu .form-area .form-content .input-with-button .text-input {
+    @apply flex-1;
+}
+
+.user-edit-sub-menu .form-area .form-content .input-with-button button {
+    @apply w-12 flex items-center rounded bg-sky-500 text-white py-1 pl-0.5;
+}
+
+.user-edit-sub-menu .form-area .form-content .input-area .password-input {
+    @apply mb-2;
+}
+
+.user-edit-sub-menu .selected-admin-list {
+    @apply h-[360px];
+}
+.user-edit-sub-menu .selected-admin-list .list-item-group .list-item {
+    @apply px-2 flex justify-between items-center h-8 cursor-pointer border-b border-slate-100;
+}
+
+.user-edit-sub-menu .selected-admin-list .list-item-group .list-item-address {
+    @apply p-2 flex flex-col justify-start cursor-pointer border-b border-slate-100 relative;
+}
+
+.user-edit-sub-menu
+    .selected-admin-list
+    .list-item-group
+    .list-item-address
+    .badge {
+    @apply h-4 leading-4 mr-1 px-0.5 text-[0.6rem] font-bold rounded-sm border;
+}
+
+.user-edit-sub-menu
+    .selected-admin-list
+    .list-item-group
+    .list-item-address
+    .line {
+    @apply flex text-sm items-center;
+}
+
+.user-edit-sub-menu
+    .selected-admin-list
+    .list-item-group
+    .list-item-address
+    .check-icon {
+    @apply absolute right-2 top-1/2;
+    transform: translateY(-50%);
+}
+
+.user-edit-sub-menu .selected-admin-list .list-item-group .list-item:hover {
+    @apply bg-slate-100;
+}
+
+.user-edit-sub-menu .sharing-goods .radio-with-dynamic-radio-button ul {
+    @apply bg-white rounded-md border border-slate-300 mb-2;
+}
+
+.user-edit-sub-menu .sharing-goods .radio-with-dynamic-radio-button ul li {
+    @apply p-2 flex justify-start items-center;
+}
+
+.user-edit-sub-menu
+    .form-area
+    .form-content
+    .input-area
+    .password-input:last-child {
+    @apply mb-0;
+}
+
+.user-edit-sub-menu .list-item-group .list-item {
+    @apply px-2 flex justify-between items-center h-8 cursor-pointer border-b border-slate-100;
+}
+
+.user-edit-sub-menu .list-item-group .list-item-address {
+    @apply p-2 flex flex-col justify-start cursor-pointer border-b border-slate-100 relative;
+}
+
+.user-edit-sub-menu .list-item-group .list-item-address .badge {
+    @apply h-4 leading-4 mr-1 px-0.5 text-[0.6rem] font-bold rounded-sm border;
+}
+
+.user-edit-sub-menu .list-item-group .list-item-address .line {
+    @apply flex text-sm items-center;
+}
+
+.user-edit-sub-menu .list-item-group .list-item-address .check-icon {
+    @apply absolute right-2 top-1/2;
+    transform: translateY(-50%);
+}
+
+.user-edit-sub-menu .popup {
+    left: unset !important;
+    right: 0;
+}
+
+.user-edit-sub-menu .list-item-group .list-item:hover {
+    @apply bg-slate-100;
+}
+
+.user-edit-sub-menu .submit {
+    @apply mt-4 w-full;
+}
+
+@media (min-width: 1024px) {
+    .user-edit-sub-menu .submit {
+        @apply absolute bottom-0;
+    }
+}

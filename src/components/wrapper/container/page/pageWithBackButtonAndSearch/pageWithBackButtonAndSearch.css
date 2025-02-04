@@ -1,0 +1,123 @@
+.page-with-back-button-and-search {
+    @apply absolute bg-slate-50 top-0 left-0 w-full flex  z-[1010] border-b border-slate-300 rounded-t-lg text-sm;
+}
+.page-with-back-button-and-search .header {
+    @apply relative flex flex-col w-full;
+}
+.page-with-back-button-and-search .header .input-area {
+    @apply w-full flex flex-row hover:bg-slate-50/75 h-8 border-b border-slate-300 cursor-pointer z-[1010] rounded-t-lg;
+}
+.page-with-back-button-and-search .header .input-area .search-input {
+    @apply flex-1 border-x border-slate-300 py-1 px-2;
+}
+.page-with-back-button-and-search .header .input-area button {
+    @apply w-8 h-8 p-1;
+}
+.page-with-back-button-and-search .header .input-area button.home-button {
+    @apply border-l border-slate-300;
+}
+.page-with-back-button-and-search .header .input-area button.map-button {
+    @apply border-l border-slate-300;
+}
+.page-with-back-button-and-search .header .input-area button.userinfo-button {
+    @apply bg-sky-400 text-white;
+}
+.page-with-back-button-and-search .header .input-area button .icon {
+    @apply w-5 h-5 mr-auto ml-auto;
+}
+.page-with-back-button-and-search .header .only-map {
+    @apply px-2 flex flex-row items-center justify-between;
+}
+.page-with-back-button-and-search .header .only-map input {
+    @apply mr-1;
+}
+.page-with-back-button-and-search .header .close-keyword-search {
+    @apply flex items-center text-xs cursor-pointer;
+}
+.page-with-back-button-and-search .header .close-keyword-search button {
+    @apply h-full;
+}
+.page-with-back-button-and-search .header .close-keyword-search button .icon {
+    @apply w-4 h-4;
+}
+.page-with-back-button-and-search .header .keyword-relative {
+    @apply absolute top-full left-0 h-[320px] w-full z-[1010] border border-slate-300 rounded-b-lg overflow-hidden;
+}
+.page-with-back-button-and-search .header .keyword-relative .wrapper {
+    @apply relative w-full h-full;
+}
+.page-with-back-button-and-search .header .keyword-relative .result {
+    @apply relative w-full h-full bg-white overflow-scroll pb-2;
+}
+.page-with-back-button-and-search
+    .header
+    .keyword-relative
+    .result
+    .result-line {
+    @apply h-[32px] flex flex-row items-center justify-between pl-4 cursor-pointer;
+}
+.page-with-back-button-and-search
+    .header
+    .keyword-relative
+    .result
+    .result-line:hover {
+    @apply bg-slate-100;
+}
+.page-with-back-button-and-search
+    .header
+    .keyword-relative
+    .result
+    .result-line
+    .matched-keyword {
+    @apply text-amber-400;
+}
+.page-with-back-button-and-search
+    .header
+    .keyword-relative
+    .result
+    .result-line
+    .search-result-direct-tail {
+    @apply text-[0.6rem];
+}
+.page-with-back-button-and-search
+    .header
+    .keyword-relative
+    .result
+    .result-line
+    .tail-button {
+    @apply h-full w-[32px];
+}
+.page-with-back-button-and-search
+    .header
+    .keyword-relative
+    .result
+    .result-line
+    .tail-button
+    .icon {
+    @apply w-4 h-4;
+}
+.page-with-back-button-and-search .header .keyword-relative .tail-area {
+    @apply flex items-center justify-end px-2 absolute bottom-0 right-0 w-full h-6 text-xs  bg-slate-100;
+}
+.page-with-back-button-and-search
+    .header
+    .keyword-relative
+    .tail-area
+    .delete-all
+    button:disabled {
+    @apply opacity-50 text-black bg-transparent;
+}
+
+@media (max-width: 1024px) {
+    .page-with-back-button-and-search {
+        @apply rounded-none;
+    }
+    .page-with-back-button-and-search .header .input-area {
+        @apply rounded-none;
+    }
+}
+@media (min-width: 1024px) {
+    .page-with-back-button-and-search .header .input-area button.map-button {
+        @apply hidden;
+    }
+}

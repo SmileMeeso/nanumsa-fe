@@ -1,0 +1,30 @@
+.page-with-back-button-and-user-info-button-header {
+    @apply absolute flex justify-between bg-slate-50 top-0 left-0 w-full flex h-8 z-[1010] border-b border-slate-300 rounded-t-lg;
+}
+.page-with-back-button-and-user-info-button-header .button {
+    @apply w-8 h-full p-1.5 cursor-pointer z-[1010];
+}
+.page-with-back-button-and-user-info-button-header .left-buttons {
+    @apply flex flex-row items-center;
+}
+.page-with-back-button-and-user-info-button-header .back-button {
+    @apply hover:bg-slate-50/75 w-8 h-full p-1.5 cursor-pointer z-[1010] inline-block;
+}
+.page-with-back-button-and-user-info-button-header .home-button {
+    @apply border-x border-slate-300 inline-block;
+}
+.page-with-back-button-and-user-info-button-header .userinfo-button {
+    @apply bg-sky-400 text-white;
+}
+.page-with-back-button-and-user-info-button-header .map-button {
+    @apply border-r;
+}
+
+@media (max-width: 1024px) {
+    .page-with-back-button-and-user-info-button-header {
+        @apply rounded-none;
+    }
+    .page-with-back-button-and-search .header .input-area {
+        @apply rounded-none;
+    }
+}

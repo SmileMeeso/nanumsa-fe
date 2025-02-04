@@ -1,0 +1,70 @@
+.user-new {
+    @apply relative flex gap-y-6 flex-col min-h-full;
+}
+.user-new .alert-box-content {
+    @apply relative h-full;
+}
+.user-new .alert-box-content .buttons {
+    @apply absolute bottom-0 right-0 flex gap-x-2;
+}
+.user-new .alert-box-content .buttons button {
+    @apply rounded py-1 px-2;
+}
+.user-new .line .title {
+    @apply mb-1;
+}
+
+.user-new .line .title .required {
+    @apply text-red-500 font-bold;
+}
+
+.user-new .line .input-content .input-area {
+    @apply flex gap-y-1 flex-col;
+}
+
+.user-new .line .input-content .input-area .flex-wrapper {
+    @apply flex gap-x-1 items-center;
+}
+
+.user-new .line .input-content .input-area .phone {
+    @apply flex-1;
+}
+
+.user-new .line .input-content .input-area .delete-area {
+    @apply w-10;
+}
+
+.user-new .line .input-content .delete-area button {
+    @apply h-5 text-xs w-full rounded bg-red-500 text-white flex justify-center items-center my-0.5 mr-1;
+}
+
+.user-new .line .input-content .add-area {
+    @apply mt-2;
+}
+
+.user-new .line .input-content .auth-area {
+    @apply mt-1;
+}
+
+.user-new .line .input-content .auth-area button {
+    @apply rounded  px-1 py-0.5 text-xs mr-1;
+}
+.user-new .line .input-content .auth-area button.mail {
+    @apply bg-sky-500 text-white;
+}
+.user-new .line .input-content .auth-area button.mail-done {
+    @apply bg-green-600 text-white;
+}
+.user-new .line .input-content .auth-area button.edit {
+    @apply bg-amber-400;
+}
+
+.user-new .submit {
+    @apply mt-4;
+}
+
+@media (min-width: 1024px) {
+    .user-new .submit {
+        @apply mt-auto;
+    }
+}

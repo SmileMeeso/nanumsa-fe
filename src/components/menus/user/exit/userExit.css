@@ -1,0 +1,84 @@
+.user-exit-sub-menu {
+    @apply w-full overflow-hidden;
+}
+.user-exit-sub-menu .alert-box-content {
+    @apply relative h-full;
+}
+.user-exit-sub-menu .alert-box-content .buttons {
+    @apply absolute bottom-0 right-0 flex gap-x-2;
+}
+.user-exit-sub-menu .alert-box-content .buttons button {
+    @apply rounded py-1 px-2;
+}
+
+.user-exit-sub-menu .rule-badge .popup {
+    @apply absolute font-normal left-1/2 top-full z-[1001] w-60 p-2 rounded border shadow-sm bg-slate-50 text-slate-900;
+    transform: translateX(-50%);
+}
+
+.user-exit-sub-menu .rule-badge .popup .close-button-wapper {
+    @apply relative;
+}
+
+.user-exit-sub-menu .rule-badge .popup .close-button-wapper button {
+    @apply absolute right-0 top-0 cursor-pointer;
+}
+
+.user-exit-sub-menu .rule-badge .popup .close-button-wapper button .icon {
+    @apply w-4 h-4;
+}
+.user-exit-sub-menu {
+    @apply h-[calc(100%-40px)] flex flex-col;
+}
+.user-exit-sub-menu .title {
+    @apply font-bold text-lg mb-4;
+}
+.user-exit-sub-menu .page-area {
+    @apply flex-1 overflow-hidden;
+}
+.user-exit-sub-menu .page-area .warning-message {
+    @apply p-2;
+}
+.user-exit-sub-menu .page-area .warning-message ol {
+    @apply pl-4 list-decimal;
+}
+.user-exit-sub-menu .page-area .admin-list {
+    @apply h-full overflow-hidden;
+}
+.user-exit-sub-menu .page-area .admin-list .check-input {
+    @apply h-10 flex items-center justify-between;
+}
+.user-exit-sub-menu .page-area .admin-list .check-input .input-group {
+    @apply flex flex-row items-center;
+}
+.user-exit-sub-menu .page-area .admin-list .check-input input {
+    @apply mr-1;
+}
+.user-exit-sub-menu .page-area .admin-list .check-input .delete-all-button {
+    @apply text-xs bg-red-700 pl-1 pr-0.5 py-0.5 rounded text-white mr-1;
+}
+.user-exit-sub-menu
+    .page-area
+    .admin-list
+    .check-input
+    .delete-all-button
+    .icon {
+    @apply w-4 h-4 ml-0.5 inline-block;
+}
+.user-exit-sub-menu .page-area .admin-list .check-input-area {
+    @apply h-full overflow-y-scroll mb-10;
+}
+.user-exit-sub-menu .page-area .admin-list .check-input-area .no-result {
+    @apply flex items-center justify-center h-full;
+}
+.user-exit-sub-menu
+    .page-area
+    .admin-list
+    .check-input-area
+    .no-result
+    .message {
+    @apply text-center;
+}
+.user-exit-sub-menu .submit {
+    @apply mt-4 w-[calc(100%-1rem)] mt-0 absolute bottom-2;
+}

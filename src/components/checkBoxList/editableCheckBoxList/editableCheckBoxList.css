@@ -1,0 +1,95 @@
+.editable-check-box-list {
+    @apply flex flex-col h-[240px] w-full mt-2 bg-white border border-slate-300 rounded-md;
+}
+.editable-check-box-list .editable-check-box-list-title {
+    @apply border-b p-2 flex justify-between;
+}
+.editable-check-box-list .editable-check-box-list-title input {
+    @apply align-middle mr-1;
+}
+.editable-check-box-list .editable-check-box-list-title .reset-button {
+    @apply flex items-center bg-violet-900 text-white rounded py-0.5 pl-1 pr-1 text-xs ml-1;
+}
+.editable-check-box-list .list-item-group {
+    @apply overflow-hidden flex-1;
+}
+.editable-check-box-list .list-item-group .scroll-wrapper {
+    @apply overflow-y-scroll h-full;
+}
+.editable-check-box-list .list-item-group .list-item {
+    @apply px-2 flex justify-between items-center h-8 cursor-pointer border-b border-slate-100;
+}
+.editable-check-box-list .list-item-group .list-item:hover {
+    @apply bg-slate-100;
+}
+.editable-check-box-list .list-item-group .list-item:hover {
+    @apply bg-slate-100;
+}
+.editable-check-box-list .list-item-group .list-item .line {
+    @apply flex items-center flex-1;
+}
+.editable-check-box-list .list-item-group .list-item .line input {
+    @apply align-middle mr-1;
+}
+.editable-check-box-list .list-item-group .list-item .line .edit-area {
+    @apply flex items-center flex-1 gap-x-1 pr-1;
+}
+.editable-check-box-list .list-item-group .list-item .line .edit-area input {
+    @apply flex-1 border border-slate-500 rounded p-1;
+}
+.editable-check-box-list
+    .list-item-group
+    .list-item
+    .line
+    .edit-area
+    input.error {
+    @apply border-red-500 text-red-500;
+}
+.editable-check-box-list
+    .list-item-group
+    .list-item
+    .line
+    .edit-area
+    .cancel-button {
+    @apply text-white bg-slate-400 flex items-center p-0.5 pr-1 rounded text-xs;
+}
+.editable-check-box-list .list-item-group .list-item .util-buttons {
+    @apply flex items-center gap-x-1;
+}
+.editable-check-box-list .list-item-group .list-item .util-buttons .button {
+    @apply text-white bg-green-500 flex items-center p-0.5 pr-1 rounded text-xs;
+}
+.editable-check-box-list
+    .list-item-group
+    .list-item
+    .util-buttons
+    .button.edit {
+    @apply bg-green-500;
+}
+.editable-check-box-list
+    .list-item-group
+    .list-item
+    .util-buttons
+    .button.save {
+    @apply bg-sky-500;
+}
+.editable-check-box-list
+    .list-item-group
+    .list-item
+    .util-buttons
+    .button:disabled {
+    @apply bg-slate-400 opacity-50;
+}
+.editable-check-box-list
+    .list-item-group
+    .list-item
+    .util-buttons
+    .cancel.button {
+    @apply bg-red-500;
+}
+.editable-check-box-list .list-item-group .placeholder {
+    @apply flex justify-center items-center w-full h-full text-center p-4;
+}
+.editable-check-box-list .error-message {
+    @apply flex items-center text-red-500 text-xs;
+}

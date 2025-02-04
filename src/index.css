@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+::-webkit-scrollbar {
+    width: 0px;
+    background: transparent; /* make scrollbar transparent */
+}
+::-webkit-inner-spin-button {
+    -webkit-appearance: none !important;
+    margin: 0 !important;
+}
+.user-menu-share-menu-button {
+    @apply flex-1 pb-2 pt-3 border rounded-xl cursor-pointer;
+}
+
+.user-menu-share-menu-button .align-wrapper {
+    @apply text-center text-xs;
+}
+
+.user-menu-share-menu-button .icon {
+    @apply inline-block p-2 rounded-full mb-1;
+}
+
+.user-menu-edit-user-info-menu .list-item {
+    @apply h-10 flex items-center justify-between p-2 border-b border-white cursor-pointer;
+}
+
+.user-menu-edit-user-info-menu .list-item:last-child {
+    @apply h-10 flex items-center justify-between p-2  cursor-pointer;
+}
+
+button:disabled {
+    @apply opacity-50;
+}

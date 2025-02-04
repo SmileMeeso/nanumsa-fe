@@ -1,0 +1,90 @@
+.sharing-list-item {
+    @apply relative p-2 mb-2 cursor-pointer rounded-lg border border-slate-300 bg-white shadow-md;
+}
+.sharing-list-item:hover {
+    @apply bg-slate-50;
+}
+.sharing-list-item.type-2 {
+    @apply opacity-50 line-through;
+}
+.sharing-list-item .admin {
+    @apply absolute top-2 right-8 cursor-pointer;
+}
+.sharing-list-item .admin.disabled {
+    @apply bg-transparent opacity-50 text-black;
+}
+.sharing-list-item .admin.disabled .icon.filled {
+    @apply text-slate-400;
+}
+.sharing-list-item .admin .icon {
+    @apply w-5 h-5;
+}
+.sharing-list-item .admin .icon.filled {
+    @apply text-sky-400;
+}
+.sharing-list-item .popup {
+    @apply absolute shadow flex items-center top-7 right-8 text-xs bg-white rounded-md border border-black p-1;
+}
+.sharing-list-item .popup .submit-button {
+    @apply text-white rounded bg-sky-400 px-1 ml-1;
+}
+.sharing-list-item .popup .close-button {
+    @apply ml-2;
+}
+.sharing-list-item .icon {
+    @apply w-4 h-4 inline-block;
+}
+.sharing-list-item .starred {
+    @apply absolute top-2 right-2 cursor-pointer;
+}
+.sharing-list-item .starred .icon {
+    @apply w-5 h-5;
+}
+.sharing-list-item .starred .icon:disabled {
+    @apply bg-transparent opacity-100;
+}
+.sharing-list-item .starred .icon.filled {
+    @apply text-amber-400;
+}
+.sharing-list-item .sharing-status-badge.type-0 {
+    @apply bg-green-500 text-white;
+}
+.sharing-list-item .sharing-status-badge.type-1 {
+    @apply bg-amber-400 text-black border border-black;
+}
+.sharing-list-item .sharing-status-badge.type-2 {
+    @apply bg-slate-400 text-white;
+}
+.sharing-list-item .sharing-status-badge.type-3 {
+    @apply bg-red-500 text-white;
+}
+.sharing-list-item .list-item-line {
+    @apply overflow-hidden flex gap-x-0.5 w-full;
+}
+.sharing-list-item .list-item-title {
+    @apply flex items-center text-base font-bold overflow-hidden text-ellipsis mb-1;
+}
+.list-item-title .sharing-status-badge {
+    @apply inline-flex justify-center items-center rounded text-[0.6rem] h-[16px] px-1 align-middle;
+}
+.sharing-list-item .list-item-goods {
+    @apply items-center text-xs;
+}
+.sharing-list-item .list-item-goods .goods-badge {
+    @apply inline-block rounded text-white text-ellipsis overflow-hidden whitespace-nowrap text-[0.6rem] w-max max-w-[100px] h-[16px] px-0.5;
+}
+.sharing-list-item .list-item-goods .goods-badge.type-0 {
+    @apply bg-red-600;
+}
+.sharing-list-item .list-item-goods .goods-badge.type-1 {
+    @apply bg-orange-600;
+}
+.sharing-list-item .list-item-goods .goods-badge.type-2 {
+    @apply bg-amber-500;
+}
+.sharing-list-item .list-item-goods .goods-badge.type-3 {
+    @apply bg-green-500;
+}
+.sharing-list-item .list-item-point-name {
+    @apply mb-1 mt-4;
+}
