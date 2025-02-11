@@ -1,4 +1,5 @@
-export const endPoint = "http://localhost:5050";
+export const endPoint =
+    import.meta.env.VITE_APP_API_URL ?? "http://localhost:5050";
 
 export default {
     GET: {

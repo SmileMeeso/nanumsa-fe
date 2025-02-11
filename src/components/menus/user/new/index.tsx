@@ -232,7 +232,7 @@ const UserNewMenu = () => {
             return;
         }
 
-        socket.current = io("ws://localhost:3030", {
+        socket.current = io("ws://localhost/socket", {
             withCredentials: true,
             transports: ["websocket"],
         });
