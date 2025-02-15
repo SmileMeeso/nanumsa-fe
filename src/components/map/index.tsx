@@ -202,7 +202,7 @@ function Map({ mapId }: MapProps) {
         setMap(mapRef.current);
         Leaflet.tileLayer(
             // "http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-            "http://xdworld.vworld.kr:8080/2d/Base/201710/{z}/{x}/{y}.png"
+            "https://xdworld.vworld.kr:8080/2d/Base/201710/{z}/{x}/{y}.png"
         ).addTo(mapRef.current);
     }, [mapRef]);
 

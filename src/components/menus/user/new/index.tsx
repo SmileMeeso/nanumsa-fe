@@ -232,10 +232,13 @@ const UserNewMenu = () => {
             return;
         }
 
-        socket.current = io("ws://localhost/socket", {
-            withCredentials: true,
-            transports: ["websocket"],
-        });
+        socket.current = io(
+            import.meta.env.VITE_APP_SOCKET_URL ?? "ws://localhost/socket:3000",
+            {
+                withCredentials: true,
+                transports: ["websocket"],
+            }
+        );
 
         socket.current.on("connect", () => {
             socket?.current?.emit("message", emailVerifyToken);
