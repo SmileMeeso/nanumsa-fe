@@ -2,6 +2,9 @@ FROM node AS node
 
 WORKDIR /app
 
+ARG VITE_APP_ACCESS_KEY_ID
+ARG VITE_APP_SECRET_ACCESS_KEY
+
 COPY package.json pnpm-lock.yaml ./
 
 RUN npm install -g pnpm
@@ -9,10 +12,14 @@ RUN pnpm install
 
 COPY . .
 
-RUN echo "VITE_APP_API_URL=http://nanumsa-api-server/api" > .env
-RUN echo "VITE_APP_SOCKET_URL=http://nanumsa-socket-server/socket" > .env
+RUN echo "VITE_APP_API_URL=http://nanumsa-api-server/api" > /app/.env \
+    && echo "VITE_APP_SOCKET_URL=http://nanumsa-socket-server/socket" >> /app/.env \
+    && echo "VITE_APP_ACCESS_KEY_ID=${VITE_APP_ACCESS_KEY_ID}" >> /app/.env \
+    && echo "VITE_APP_SECRET_ACCESS_KEY=${VITE_APP_SECRET_ACCESS_KEY}" >> /app/.env
 
 RUN pnpm run build --base=/
+
+RUN rm .env
 
 FROM nginx:alpine
 COPY nginx.conf /etc/nginx/conf.d/default.conf
