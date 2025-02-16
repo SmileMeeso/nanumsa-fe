@@ -235,7 +235,7 @@ const UserNewMenu = () => {
         socket.current = io(
             import.meta.env.VITE_APP_SOCKET_URL ?? "ws://localhost/socket:3000",
             {
-                withCredentials: true,
+                withCredentials: false,
                 transports: ["websocket"],
             }
         );
