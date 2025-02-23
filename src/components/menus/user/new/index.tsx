@@ -238,11 +238,13 @@ const UserNewMenu = () => {
                 withCredentials: true,
                 transports: ["websocket"],
                 secure: true,
+                path: "/socket/socket.io/",
             }
         );
 
         socket.current.on("connect", () => {
-            socket?.current?.emit("message", emailVerifyToken);
+            console.log("connection!");
+            socket?.current?.send(emailVerifyToken);
         });
 
         socket.current.on("message", () => {
