@@ -115,11 +115,7 @@ jobs:
                   docker push smilemeeso/nanumsa-front:latest
                   docker push smilemeeso/nanumsa-front:${{ env.new_version }}
 
-            - name: Check previous job status
-              run: |
-                  echo "Previous job concluded with: ${{ github.event.workflow_run.conclusion }}"
-
     call-deploy:
         uses: ./.github/workflows/kustomize.yaml
         needs: build-and-push-image
-        if: ${{ github.event.workflow_run.conclusion == 'success' }}
+        if: ${{ github.event.workflow_run.conclusion == 'success' || github.event.workflow_run.conclusion == 'skipped' }}
