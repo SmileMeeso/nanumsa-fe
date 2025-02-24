@@ -6,24 +6,25 @@ on:
         types:
             - completed
 
-deploy:
-    runs-on: self-hosted
-    if: ${{ github.event.workflow_run.conclusion == 'success' }}
-    steps:
-        - name: Setup Kustomize
-          uses: imranismail/setup-kustomize@v1
+jobs:
+    deploy:
+        runs-on: self-hosted
+        if: ${{ github.event.workflow_run.conclusion == 'success' }}
+        steps:
+            - name: Setup Kustomize
+              uses: imranismail/setup-kustomize@v1
 
-        - name: Checkout Kustomize repository
-          uses: actions/checkout@v2
+            - name: Checkout Kustomize repository
+              uses: actions/checkout@v2
 
-        - name: Update k8s Kustomization file
-          run: |
-              sed -i "s/newTag: .*/newTag: \"$new_tag\"/" kustomization.yaml
-              echo "Updated kustomization.yaml with newTag: $new_tag"
+            - name: Update k8s Kustomization file
+              run: |
+                  sed -i "s/newTag: .*/newTag: \"$new_tag\"/" kustomization.yaml
+                  echo "Updated kustomization.yaml with newTag: $new_tag"
 
-        - name: Commit changes
-          run: |
-              git config user.name ${{ secrets.USER_NAME }}
-              git config user.email ${{ secrets.EMAIL }}
-              git commit -am "Update Kustomization newTag to ${{ env.new_tag }}" || echo "No changes to commit."
-              git push
+            - name: Commit changes
+              run: |
+                  git config user.name ${{ secrets.USER_NAME }}
+                  git config user.email ${{ secrets.EMAIL }}
+                  git commit -am "Update Kustomization newTag to ${{ env.new_tag }}" || echo "No changes to commit."
+                  git push
