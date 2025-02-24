@@ -38,12 +38,19 @@ jobs:
                   echo "  - patch.yaml" >> kustomization.yaml
                   echo "Created kustomization.yaml"
 
-            - name: Create version in patch.yaml
+            - name: Create patch.yaml
               run: |
                   cd nanumsa-k8s
-                  touch patch.yaml
-                  sed -i "s/version: .*/        version: '${{ steps.output-vars.outputs.new_version }}'/" patch.yaml
-                  echo "Updated patch.yaml with new version"
+                  echo "apiVersion: apps/v1" > patch.yaml
+                  echo "kind: Deployment" >> patch.yaml
+                  echo "metadata:" >> patch.yaml
+                  echo "  name: ${{ inputs.image-name }}" >> patch.yaml
+                  echo "spec:" >> patch.yaml
+                  echo "  template:" >> patch.yaml
+                  echo "    metadata:" >> patch.yaml
+                  echo "      annotations:" >> patch.yaml
+                  echo "        version: '${{ steps.output-vars.outputs.new_version }}'" >> patch.yaml
+                  echo "Created patch.yaml"
 
             - name: Apply Kustomization
               run: |
