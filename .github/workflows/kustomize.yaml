@@ -2,11 +2,11 @@ name: nanumsa CI kustomize
 
 on:
     workflow_call:
-      inputs:
-        image-name:
-          description: 'Name of the image to be updated'
-          required: true
-          default: 'nanumsa-front'
+        inputs:
+            image-name:
+                description: "Name of the image to be updated"
+                required: true
+                default: "nanumsa-front"
 
 jobs:
     deploy:
@@ -14,7 +14,7 @@ jobs:
         steps:
             - name: Check previous job status
               run: |
-                  echo "Previous job concluded with: ${{ github.event.workflow_run.conclusion }}"
+                  echo "This job is being executed for Kustomization update"
 
             - name: Setup Kustomize
               uses: imranismail/setup-kustomize@v1
@@ -22,7 +22,7 @@ jobs:
             - name: Checkout Kustomize repository
               uses: actions/checkout@v2
 
-             - name: Checkout B Project repository
+            - name: Checkout B Project repository
               uses: actions/checkout@v2
               with:
                   repository: SmileMeeso/nanumsa-k8s
@@ -32,7 +32,7 @@ jobs:
               run: |
                   cd /home/ubuntu/nanumsa/k8s
                   sed -i "s/newTag: .*/newTag: \"$new_tag\"/" kustomization/kustomization.yaml
-                  sed -i "s/name: .*/name: \"SmileMeeso/${{ inputs.image-name }}\"/" kustomization.yaml
+                  sed -i "s/name: .*/name: \"SmileMeeso/${{ inputs.image-name }}\"/" kustomization/kustomization.yaml
                   echo "Updated kustomization.yaml with newTag: $new_tag"
 
             - name: Commit changes
