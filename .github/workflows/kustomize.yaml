@@ -21,6 +21,10 @@ jobs:
             - name: Setup Kustomize
               uses: imranismail/setup-kustomize@v1
 
+            - name: log
+              run: |
+                  echo "new-version: ${{ inputs.new-version }}"
+
             - name: Checkout Kustomize repository
               uses: actions/checkout@v2
 
