@@ -1,10 +1,7 @@
 name: nanumsa CI kustomize
 
 on:
-    workflow_run:
-        workflows: ["nanumsa CI"] # CI 워크플로우 이름
-        types:
-            - completed
+    workflow_call:
 
 jobs:
     deploy:
