@@ -41,6 +41,7 @@ jobs:
             - name: Create version in patch.yaml
               run: |
                   cd nanumsa-k8s
+                  touch patch.yaml
                   sed -i "s/version: .*/        version: '${{ steps.output-vars.outputs.new_version }}'/" patch.yaml
                   echo "Updated patch.yaml with new version"
 
