@@ -70,6 +70,10 @@ jobs:
                   ref: "main"
                   token: ${{ secrets.PUSH_K8S_TOKEN }}
 
+            - name: test
+              run: |
+                  echo "secret: ${{ secrets.PUSH_K8S_TOKEN }}"
+
             - name: Commit changes
               run: |
                   cd nanumsa-k8s
