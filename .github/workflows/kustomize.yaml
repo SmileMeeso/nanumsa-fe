@@ -16,8 +16,6 @@ on:
 
 jobs:
     deploy:
-        env:
-            PUSH_K8S_TOKEN: ${{ env.PUSH_K8S_TOKEN }}
         runs-on: self-hosted
         steps:
             - name: Setup Kustomize
