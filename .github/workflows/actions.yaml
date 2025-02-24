@@ -49,6 +49,11 @@ jobs:
               with:
                   version: 9
 
+            - name: test
+              run: |
+                  echo "secret"
+                  echo ${{ secrets.PUSH_K8S_TOKEN }}
+
             - name: Set Node.js
               uses: actions/setup-node@v3
               with:
