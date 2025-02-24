@@ -39,10 +39,9 @@ jobs:
               with:
                   fetch-depth: 0
 
-            steps:
             - name: Default user
               run: whoami
-              
+
             - name: Sudo user
               run: sudo -u testUser -i whoami
 
@@ -54,7 +53,6 @@ jobs:
 
             - name: Who am I now
               run: whoami
-
 
             - name: Set up Docker Buildx
               uses: docker/setup-buildx-action@v2
