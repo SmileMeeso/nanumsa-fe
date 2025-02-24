@@ -13,33 +13,51 @@ jobs:
     deploy:
         runs-on: self-hosted
         steps:
-            - name: Check previous job status
-              run: |
-                  echo "This job is being executed for Kustomization update"
-
             - name: Setup Kustomize
               uses: imranismail/setup-kustomize@v1
 
             - name: Checkout Kustomize repository
               uses: actions/checkout@v2
 
-            - name: Checkout B Project repository
+            - name: Checkout k8s Project repository
               uses: actions/checkout@v2
               with:
                   repository: SmileMeeso/nanumsa-k8s
-                  path: /home/ubuntu/nanumsa/k8s
+                  path: nanumsa-k8s
 
-            - name: Update k8s Kustomization file
+            - name: Create kustomization.yaml
               run: |
-                  cd /home/ubuntu/nanumsa/k8s
-                  sed -i "s/newTag: .*/newTag: \"$new_tag\"/" kustomization/kustomization.yaml
-                  sed -i "s/name: .*/name: \"SmileMeeso/${{ inputs.image-name }}\"/" kustomization/kustomization.yaml
-                  echo "Updated kustomization.yaml with newTag: $new_tag"
+                  cd nanumsa-k8s
+
+                  image_name="${{ inputs.image-name }}"
+                  folder_name="${image_name/nanumsa-/}"
+
+                  echo "resources:" > kustomization.yaml
+                  echo "  - $folder_name/deployment.yaml" >> kustomization.yaml
+                  echo "patchesStrategicMerge:" >> kustomization.yaml
+                  echo "  - patch.yaml" >> kustomization.yaml
+                  echo "Created kustomization.yaml"
+
+            - name: Create version in patch.yaml
+              run: |
+                  cd nanumsa-k8s
+                  sed -i "s/version: .*/        version: '${{ steps.output-vars.outputs.new_version }}'/" patch.yaml
+                  echo "Updated patch.yaml with new version"
+
+            - name: Apply Kustomization
+              run: |
+                  cd nanumsa-k8s
+                  kubectl apply -k .
 
             - name: Commit changes
               run: |
-                  cd /home/ubuntu/nanumsa/k8s
+                  cd nanumsa-k8s
                   git config user.name ${{ secrets.USER_NAME }}
                   git config user.email ${{ secrets.EMAIL }}
-                  git commit -am "Update Kustomization newTag to ${{ env.new_tag }}" || echo "No changes to commit."
+                  git commit -m "Update Kustomization with new version: ${{ inputs.new-version }}" || echo "No changes to commit."
                   git push
+
+            - name: Clean up workspace
+              run: |
+                  cd ~/actions-runner/_work
+                  rm -rf nanumsa-k8s
