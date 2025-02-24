@@ -114,6 +114,6 @@ jobs:
                   docker push smilemeeso/nanumsa-front:latest
                   docker push smilemeeso/nanumsa-front:${{ env.new_version }}
     call-deploy:
-        uses: ./.github/workflows/kustomize.yml
+        uses: ./.github/workflows/kustomize.yaml
         needs: build-and-push-image
         if: ${{ github.event.workflow_run.conclusion == 'success' }}
