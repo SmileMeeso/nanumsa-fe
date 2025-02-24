@@ -68,7 +68,7 @@ jobs:
               with:
                   repository: SmileMeeso/nanumsa-k8s
                   ref: "main"
-                  token: ${{ env.PUSH_K8S_TOKEN }}
+                  token: ${{ secrets.PUSH_K8S_TOKEN }}
 
             - name: Commit changes
               run: |
