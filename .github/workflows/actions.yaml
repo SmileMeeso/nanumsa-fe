@@ -47,13 +47,11 @@ jobs:
               with:
                   version: 9
 
-            - name: List files in the current directory
+            - name: Set Node.js
+              uses: actions/setup-node@v3
               run: |
                   echo "Listing files in the current directory:"
                   ls -al
-
-            - name: Set Node.js
-              uses: actions/setup-node@v3
               with:
                   node-version: 20
                   cache: "pnpm"
