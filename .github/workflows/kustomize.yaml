@@ -50,7 +50,7 @@ jobs:
                   echo "  template:" >> patch.yaml
                   echo "    metadata:" >> patch.yaml
                   echo "      annotations:" >> patch.yaml
-                  echo "        version: '${{ env.new_version }}'" >> patch.yaml
+                  echo "        version: '${{ steps.build-and-push-image.outputs.NEW_VERSION }}'" >> patch.yaml
                   cat patch.yaml
                   echo "Created patch.yaml"
 
@@ -61,10 +61,11 @@ jobs:
 
             - name: Commit changes
               run: |
+                  ls -l
                   cd nanumsa-k8s
                   git config user.name ${{ secrets.USER_NAME }}
                   git config user.email ${{ secrets.EMAIL }}
-                  git commit -m "Update Kustomization with new version: ${{ env.new_version }}" || echo "No changes to commit."
+                  git commit -m "Update Kustomization with new version: ${{ steps.build-and-push-image.outputs.NEW_VERSION }}" || echo "No changes to commit."
                   git push origin main
 
             - name: Clean up workspace
