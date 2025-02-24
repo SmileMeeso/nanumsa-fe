@@ -47,12 +47,17 @@ jobs:
               with:
                   version: 9
 
+            - name: List files in the current directory
+              run: |
+                  echo "Listing files in the current directory:"
+                  ls -al
+
             - name: Set Node.js
               uses: actions/setup-node@v3
               with:
                   node-version: 20
                   cache: "pnpm"
-                  cache-dependency-path: "**/pnpm-lock.yaml"
+                  cache-dependency-path: "./pnpm-lock.yaml"
 
             - name: Set Docker hub
               uses: docker/login-action@v2
