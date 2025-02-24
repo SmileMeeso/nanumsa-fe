@@ -29,6 +29,7 @@ jobs:
               with:
                   repository: SmileMeeso/nanumsa-k8s
                   path: nanumsa-k8s
+                  token: ${{ secrets.PUSH_K8S_TOKEN }}
 
             - name: Create kustomization.yaml
               run: |
@@ -67,8 +68,6 @@ jobs:
             - name: Commit changes
               run: |
                   cd nanumsa-k8s
-                  ls -l
-
                   git config user.name ${{ secrets.USER_NAME }}
                   git config user.email ${{ secrets.EMAIL }}
                   git commit -m "Update Kustomization with new version: ${{ inputs.new-version }}" || echo "No changes to commit."
