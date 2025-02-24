@@ -64,7 +64,17 @@ jobs:
             - name: Extract latest version tag
               id: get-latest-tag
               run: |
-                  latest_version=$(docker pull smilemeeso/nanumsa-front:latest || echo "0.0.0")
+                  tags=$(curl -s https://registry.hub.docker.com/v2/repositories/smilemeeso/nanumsa-front/tags | jq -r '.results[].name')
+
+                  latest_count=$(echo "$tags" | grep -w "latest" | wc -l)
+                  all_tags=($(echo "$tags"))
+
+                  if [ "$latest_count" -lt 2 ]; then
+                      latest_version="0.0.0"
+                  else
+                      latest_version=$(printf "%s\n" "${all_tags[@]}" | grep -v "latest" | head -n 1 || echo "0.0.0")
+                  fi
+
                   echo "Latest version: $latest_version"
                   echo "latest=$latest_version" >> $GITHUB_ENV
 
