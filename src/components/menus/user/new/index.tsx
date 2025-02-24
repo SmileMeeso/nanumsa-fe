@@ -8,9 +8,11 @@ import TextInput from "@components/input/textInput";
 import { ValidateResult } from "@components/menus/sharing";
 import AlertBox from "@components/alertBox";
 
+import { validateEmailInput } from "@/validates/user/emailInput";
+
 import { PlusIcon, MinusIcon } from "@heroicons/react/16/solid";
 
-import { CheckIcon } from "@heroicons/react/24/outline";
+import { CheckIcon, CheckBadgeIcon } from "@heroicons/react/24/outline";
 
 import {
     postVerifyEmailToken,
@@ -38,25 +40,6 @@ import { CheckboxListItemIdType } from "@components/checkBoxList";
 import { CheckBoxListEditItem } from "@components/checkBoxList/editableCheckBoxList";
 
 import "./userNew.css";
-
-export const validateEmailInput = (input: string): ValidateResult => {
-    if (
-        !/^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i.test(
-            input
-        )
-    ) {
-        return {
-            code: 1,
-            result: false,
-            message: "유효한 이메일을 입력해주세요.",
-        };
-    }
-
-    return {
-        code: 0,
-        result: true,
-    };
-};
 
 const UserNewMenu = () => {
     const navigate = useNavigate();
@@ -733,10 +716,16 @@ const UserNewMenu = () => {
                         )}
                         {!emailVerifyState.result &&
                         !emailVerifySendState.result ? (
-                            <>인증메일을 전송해주세요.</>
+                            <>버튼을 눌러 인증메일을 전송해주세요.</>
                         ) : emailVerifySendState.result &&
                           !emailVerifyState.result ? (
-                            <>인증 메일이 전송되었어요.</>
+                            <>
+                                인증 메일이 전송되었어요.
+                                <button className="text-xs inline-flex items-center ml-2 bg-slate-200 rounded px-1 py-0.5">
+                                    인증 확인하기
+                                    <CheckBadgeIcon className="ml-1 w-4 h-4 inline-block" />
+                                </button>
+                            </>
                         ) : (
                             <span>
                                 인증이 완료되었어요.

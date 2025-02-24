@@ -8,7 +8,7 @@ import { useQuery } from "react-query";
 import TextInput from "@components/input/textInput";
 import FullWidthButton from "@components/button/fullWidthButton";
 
-import { validateEmailInput } from "@components/menus/user/new";
+import { validateEmailInput } from "@/validates/user/emailInput";
 import { ValidateResult } from "@components/menus/sharing";
 import AlertBox from "@components/alertBox";
 
