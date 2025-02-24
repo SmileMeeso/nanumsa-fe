@@ -37,6 +37,7 @@ jobs:
                   echo "patches:" >> kustomization.yaml
                   echo "  - patch.yaml" >> kustomization.yaml
                   echo "Created kustomization.yaml"
+                  cat kustomization.yaml
 
             - name: Create patch.yaml
               run: |
@@ -50,6 +51,7 @@ jobs:
                   echo "    metadata:" >> patch.yaml
                   echo "      annotations:" >> patch.yaml
                   echo "        version: '${{ steps.output-vars.outputs.new_version }}'" >> patch.yaml
+                  cat patch.yaml
                   echo "Created patch.yaml"
 
             - name: Apply Kustomization
