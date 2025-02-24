@@ -107,11 +107,12 @@ jobs:
                   esac
                   new_version="${major}.${minor}.${patch}"
                   echo "NEW_VERSION=$new_version" >> $GITHUB_OUTPUT
+                  echo "NEW_VERSION=$new_version" >> $GITHUB_ENV
                   echo "new_version=$new_version"
 
             - name: Build and tag Docker image
               run: |
-                  docker build -t smilemeeso/nanumsa-front:latest -t smilemeeso/nanumsa-front:$new_version .
+                  docker build -t smilemeeso/nanumsa-front:latest -t smilemeeso/nanumsa-front:${{ env.new_version }} .
 
             - name: Push Docker image
               run: |
