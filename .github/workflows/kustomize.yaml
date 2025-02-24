@@ -2,6 +2,11 @@ name: nanumsa CI kustomize
 
 on:
     workflow_call:
+      inputs:
+        image-name:
+          description: 'Name of the image to be updated'
+          required: true
+          default: 'nanumsa-front'
 
 jobs:
     deploy:
@@ -17,13 +22,22 @@ jobs:
             - name: Checkout Kustomize repository
               uses: actions/checkout@v2
 
+             - name: Checkout B Project repository
+              uses: actions/checkout@v2
+              with:
+                  repository: SmileMeeso/nanumsa-k8s
+                  path: /home/ubuntu/nanumsa/k8s
+
             - name: Update k8s Kustomization file
               run: |
-                  sed -i "s/newTag: .*/newTag: \"$new_tag\"/" kustomization.yaml
+                  cd /home/ubuntu/nanumsa/k8s
+                  sed -i "s/newTag: .*/newTag: \"$new_tag\"/" kustomization/kustomization.yaml
+                  sed -i "s/name: .*/name: \"SmileMeeso/${{ inputs.image-name }}\"/" kustomization.yaml
                   echo "Updated kustomization.yaml with newTag: $new_tag"
 
             - name: Commit changes
               run: |
+                  cd /home/ubuntu/nanumsa/k8s
                   git config user.name ${{ secrets.USER_NAME }}
                   git config user.email ${{ secrets.EMAIL }}
                   git commit -am "Update Kustomization newTag to ${{ env.new_tag }}" || echo "No changes to commit."
