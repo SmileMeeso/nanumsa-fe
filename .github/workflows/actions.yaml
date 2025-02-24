@@ -111,12 +111,12 @@ jobs:
 
             - name: Build and tag Docker image
               run: |
-                  docker build -t smilemeeso/nanumsa-front:latest -t smilemeeso/nanumsa-front:${{ steps.build-and-push-image.outputs.NEW_VERSION }} .
+                  docker build -t smilemeeso/nanumsa-front:latest -t smilemeeso/nanumsa-front:$new_version .
 
             - name: Push Docker image
               run: |
                   docker push smilemeeso/nanumsa-front:latest
-                  docker push smilemeeso/nanumsa-front:${{ steps.build-and-push-image.outputs.NEW_VERSION }}
+                  docker push smilemeeso/nanumsa-front:$new_version
 
     call-deploy:
         uses: ./.github/workflows/kustomize.yaml
