@@ -55,10 +55,10 @@ jobs:
             - uses: actions/cache@v3
               name: Setup pnpm cache
               with:
-                path: ${{ env.STORE_PATH }}
-                key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-                restore-keys: |
-                  ${{ runner.os }}-pnpm-store-
+                  path: ${{ env.STORE_PATH }}
+                  key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+                  restore-keys: |
+                      ${{ runner.os }}-pnpm-store-
 
             - name: Set Docker hub
               uses: docker/login-action@v2
@@ -113,8 +113,7 @@ jobs:
               run: |
                   docker push smilemeeso/nanumsa-front:latest
                   docker push smilemeeso/nanumsa-front:${{ env.new_version }}
-  
-  call-deploy:
-    uses: ./.github/workflows/kustomize.yml
-    needs: build-and-push-image
-    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    call-deploy:
+        uses: ./.github/workflows/kustomize.yml
+        needs: build-and-push-image
+        if: ${{ github.event.workflow_run.conclusion == 'success' }}
