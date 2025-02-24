@@ -44,6 +44,8 @@ jobs:
 
             - name: Set pnpm
               uses: pnpm/action-setup@v2
+                with:
+                  version: 9
 
             - name: Set Node.js
               uses: actions/setup-node@v3
