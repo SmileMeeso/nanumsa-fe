@@ -108,6 +108,7 @@ jobs:
                   echo "NEW_VERSION=$new_version" >> $GITHUB_OUTPUT
                   echo "new_version=$new_version" >> $GITHUB_ENV
                   echo "new_version=$new_version"
+                  echo "new_version=${{ steps.build-and-push-image.outputs.NEW_VERSION }}"
 
             - name: Build and tag Docker image
               run: |
