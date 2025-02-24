@@ -64,11 +64,6 @@ jobs:
                   cd nanumsa-k8s
                   kubectl apply -k .
 
-            - name: test
-              run: |
-                  echo "secret"
-                  echo ${{ secrets.PUSH_K8S_TOKEN }}
-
             - uses: actions/checkout@v2
               with:
                   repository: SmileMeeso/nanumsa-k8s
@@ -78,10 +73,8 @@ jobs:
             - name: Commit changes
               run: |
                   cd nanumsa-k8s
-                  git config user.name '${{ secrets.USER_NAME }}'
-                  git config user.email '${{ secrets.EMAIL }}'
-                  # git commit -m "Update Kustomization with new version: ${{ inputs.new-version }}" || echo "No changes to commit."
-                  # git push origin main
+                  git config user.name ${{ secrets.USER_NAME }}
+                  git config user.email ${{ secrets.EMAIL }}
 
             - name: Clean up workspace
               run: |
