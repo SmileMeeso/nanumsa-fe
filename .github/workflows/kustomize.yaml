@@ -81,7 +81,7 @@ jobs:
                   git config user.name ${{ secrets.USER_NAME }}
                   git config user.email ${{ secrets.EMAIL }}
                   git commit -m "Update Kustomization with new version: ${{ inputs.new-version }}" || echo "No changes to commit."
-                  git push origin main
+                  # git push origin main
 
             - name: Clean up workspace
               run: |
