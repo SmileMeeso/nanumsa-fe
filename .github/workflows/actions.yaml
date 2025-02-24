@@ -118,4 +118,4 @@ jobs:
     call-deploy:
         uses: ./.github/workflows/kustomize.yaml
         needs: build-and-push-image
-        if: ${{ github.event.workflow_run.conclusion == 'success' || github.event.workflow_run.conclusion == 'skipped' }}
+        # if: ${{ github.event.workflow_run.conclusion == 'success' || github.event.workflow_run.conclusion == 'skipped' }}
