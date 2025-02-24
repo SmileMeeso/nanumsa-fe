@@ -121,7 +121,6 @@ jobs:
     test:
         runs-on: self-hosted
         needs: build-and-push-image
-        secrets: inherit
         with:
             image-name: "nanumsa-front"
             new-version: ${{ needs.build-and-push-image.outputs.NEW_VERSION }}
