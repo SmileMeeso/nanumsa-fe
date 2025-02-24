@@ -34,7 +34,7 @@ jobs:
 
                   echo "resources:" > kustomization.yaml
                   echo "  - $folder_name/deployment.yaml" >> kustomization.yaml
-                  echo "patches:" >> kustomization.yaml
+                  echo "patchesStrategicMerge:" >> kustomization.yaml
                   echo "  - patch.yaml" >> kustomization.yaml
                   echo "Created kustomization.yaml"
                   cat kustomization.yaml
