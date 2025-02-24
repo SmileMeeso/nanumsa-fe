@@ -123,3 +123,4 @@ jobs:
         needs: build-and-push-image
         with:
             image-name: "nanumsa-front"
+            new-version: ${{ steps.build-and-push-image.outputs.NEW_VERSION }}

@@ -8,11 +8,15 @@ on:
                 required: true
                 default: "nanumsa-front"
                 type: string
+            new-version:
+                description: "New Deploy Version"
+                required: true
+                default: "0.0.0"
+                type: string
 
 jobs:
     deploy:
         runs-on: self-hosted
-        needs: build-and-push-image
         steps:
             - name: Setup Kustomize
               uses: imranismail/setup-kustomize@v1
@@ -51,7 +55,7 @@ jobs:
                   echo "  template:" >> patch.yaml
                   echo "    metadata:" >> patch.yaml
                   echo "      annotations:" >> patch.yaml
-                  echo "        version: '${{ needs.build-and-push-image.outputs.NEW_VERSION }}'" >> patch.yaml
+                  echo "        version: '${{ inputs.new-version }}'" >> patch.yaml
                   cat patch.yaml
                   echo "Created patch.yaml"
 
@@ -66,7 +70,7 @@ jobs:
                   cd nanumsa-k8s
                   git config user.name ${{ secrets.USER_NAME }}
                   git config user.email ${{ secrets.EMAIL }}
-                  git commit -m "Update Kustomization with new version: ${{ needs.build-and-push-image.outputs.NEW_VERSION }}" || echo "No changes to commit."
+                  git commit -m "Update Kustomization with new version: ${{ inputs.new-version }}" || echo "No changes to commit."
                   git push origin main
 
             - name: Clean up workspace
