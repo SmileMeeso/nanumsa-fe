@@ -1,6 +1,9 @@
 name: nanumsa deployment
 
 on:
+    push:
+        branches:
+            - "*"
     workflow_dispatch:
         inputs:
             # environment:
