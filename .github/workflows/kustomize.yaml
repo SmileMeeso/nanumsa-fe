@@ -29,7 +29,6 @@ jobs:
               with:
                   repository: SmileMeeso/nanumsa-k8s
                   path: nanumsa-k8s
-                  token: ${{ secrets.PUSH_K8S_TOKEN }}
 
             - name: Create kustomization.yaml
               run: |
@@ -64,6 +63,12 @@ jobs:
               run: |
                   cd nanumsa-k8s
                   kubectl apply -k .
+
+            - uses: actions/checkout@v3
+              with:
+                  repository: SmileMeeso/nanumsa-k8s
+                  ref: "main"
+                  token: ${{ secrets.PUSH_K8S_TOKEN }}
 
             - name: Commit changes
               run: |
