@@ -23,6 +23,7 @@ jobs:
 
             - name: log
               run: |
+                  echo "image-name: ${{ inputs.image-name }}"
                   echo "new-version: ${{ inputs.new-version }}"
 
             - name: Checkout Kustomize repository
