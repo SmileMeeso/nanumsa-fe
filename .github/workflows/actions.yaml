@@ -1,4 +1,4 @@
-name: nanumsa deployment
+name: nanumsa CI
 
 on:
     push:

@@ -1,7 +1,14 @@
+name: nanumsa CI kustomize
+
+on:
+    workflow_run:
+        workflows: ["nanumsa CI"] # CI 워크플로우 이름
+        types:
+            - completed
+
 deploy:
     runs-on: self-hosted
-    needs: build-and-push-image
-
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     steps:
         - name: Setup Kustomize
           uses: imranismail/setup-kustomize@v1
