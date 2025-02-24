@@ -114,8 +114,7 @@ jobs:
               run: |
                   docker push smilemeeso/nanumsa-front:latest
                   docker push smilemeeso/nanumsa-front:${{ env.new_version }}
-    call-before-deploy:
-        steps:
+
             - name: Check previous job status
               run: |
                   echo "Previous job concluded with: ${{ github.event.workflow_run.conclusion }}"
