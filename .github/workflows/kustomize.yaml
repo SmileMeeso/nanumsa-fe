@@ -25,7 +25,7 @@ jobs:
               uses: actions/checkout@v2
 
             - name: Checkout k8s Project repository
-              uses: actions/checkout@v2
+              uses: actions/checkout@v4
               with:
                   repository: SmileMeeso/nanumsa-k8s
                   path: nanumsa-k8s
@@ -66,8 +66,9 @@ jobs:
 
             - name: Commit changes
               run: |
-                  ls -l
                   cd nanumsa-k8s
+                  ls -l
+
                   git config user.name ${{ secrets.USER_NAME }}
                   git config user.email ${{ secrets.EMAIL }}
                   git commit -m "Update Kustomization with new version: ${{ inputs.new-version }}" || echo "No changes to commit."
