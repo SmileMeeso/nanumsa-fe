@@ -111,6 +111,7 @@ jobs:
             - name: Set new version output variable
               run: |
                   echo "NEW_TAG=$new_version" >> $GITHUB_OUTPUT
+                  echo "NEW_TAG=$new_version"
                   echo "new_version=${{ steps.build-and-push-image.outputs.NEW_TAG }}"
 
             - name: Build and tag Docker image
