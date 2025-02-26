@@ -106,11 +106,12 @@ jobs:
                   esac
                   new_version="${major}.${minor}.${patch}"
                   echo "new_version=$new_version" >> $GITHUB_ENV
+                  "NEW_TAG=$new_version" >> $GITHUB_OUTPUT
                   echo "new_version=$new_version"
 
             - name: Set new version output variable
               run: |
-                  echo "NEW_TAG=$new_version" >> "$GITHUB_OUTPUT"
+                  echo "NEW_TAG=$new_version" >> $GITHUB_OUTPUT
                   echo "NEW_TAG=$new_version"
                   echo "new_version=${{ steps.calculate-version.outputs.NEW_TAG }}"
 
