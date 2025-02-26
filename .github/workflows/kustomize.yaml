@@ -32,7 +32,7 @@ jobs:
 
             - name: Edit Update Image Tag in Kustomization
               run: |
-                  echo ${image_name/nanumsa-}
+                  echo "${{image_name/nanumsa-}}"
                   ls -l ./nanumsa-k8s/
                   image_name="${{ secrets.DOCKERHUB_USERNAME }}/${{ inputs.image-name }}"
                   folder_name="./nanumsa-k8s/${image_name/nanumsa-/}"
