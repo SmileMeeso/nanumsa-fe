@@ -32,7 +32,7 @@ jobs:
 
             - name: Edit Update Image Tag in Kustomization
               run: |
-                  image_name="${{ github.event.inputs.image-name }}"
+                  image_name="${{ inputs.image-name }}"
                   modified_name=${image_name/nanumsa/}
                   combined_path="./nanumsa-k8s${modified_name}"
 
