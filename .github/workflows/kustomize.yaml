@@ -84,6 +84,10 @@ jobs:
             - name: Commit changes
               run: |
                   ls -l
+
+                  image_name="${{ inputs.image-name }}"
+                  folder_name="${image_name/nanumsa-/}"
+
                   echo "$folder_name/deployment.yaml"
                   cat $folder_name/deployment.yaml
 
