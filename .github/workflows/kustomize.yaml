@@ -36,8 +36,6 @@ jobs:
                   modified_name=${image_name/nanumsa-/}
                   combined_path="./nanumsa-k8s/${modified_name}"
 
-                  echo "Combined path: ${combined_path}"
-
                   cd $combined_path
 
                   yq eval ".images[0].name = \"${image_name}:${new-version}\"" -i $folder_name/kustomization.yaml
