@@ -124,7 +124,7 @@ jobs:
         steps:
             - name: test
               run: |
-                  echo "image-name: ${{ needs.calculate-version.outputs.NEW_TAG }}"
+                  echo "image-name: ${{ needs.build-and-push-image.outputs.NEW_TAG }}"
 
     call-deploy:
         uses: ./.github/workflows/kustomize.yaml
@@ -132,4 +132,4 @@ jobs:
         secrets: inherit
         with:
             image-name: "nanumsa-front"
-            new-version: ${{ needs.calculate-version.outputs.NEW_TAG }}
+            new-version: ${{ needs.build-and-push-image.outputs.NEW_TAG }}
