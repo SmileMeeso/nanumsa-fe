@@ -38,7 +38,7 @@ jobs:
 
                   cd $combined_path
 
-                  yq eval ".images[0].name = \"${image_name}:${new-version}\"" -i $folder_name/kustomization.yaml
+                  yq eval ".images[0].name = \"${image_name}:${new-version}\"" -i $combined_path/kustomization.yaml
 
             - name: Kustomize Build"
               uses: karancode/kustomize-github-action@master
@@ -52,7 +52,10 @@ jobs:
 
             - name: Change Deployment to New Deployment File
               run: |
-                  mv ./nanumsa-k8s/${image_name/nanumsa-/}/deployment.yaml ./nanumsa-k8s/${image_name/nanumsa-/}/kustomized-deployment.yaml
+                  image_name="${{ inputs.image-name }}"
+                    modified_name=${image_name/nanumsa-/}
+                    combined_path="./nanumsa-k8s/${modified_name}"
+                    mv $combined_path/deployment.yaml $combined_path/kustomized-deployment.yaml
 
             - uses: actions/checkout@v2
               with:
