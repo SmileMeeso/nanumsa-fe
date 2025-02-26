@@ -34,7 +34,7 @@ jobs:
     build-and-push-image:
         runs-on: self-hosted
         outputs:
-            NEW_TAG: ${{ steps.build-and-push-image.outputs.NEW_TAG }}
+            NEW_TAG: ${{ steps.calculate-version.outputs.NEW_TAG }}
         steps:
             - name: Checkout
               uses: actions/checkout@v3
@@ -112,7 +112,7 @@ jobs:
               run: |
                   echo "NEW_TAG=$new_version" >> "$GITHUB_OUTPUT"
                   echo "NEW_TAG=$new_version"
-                  echo "new_version=${{ steps.build-and-push-image.outputs.NEW_TAG }}"
+                  echo "new_version=${{ steps.calculate-version.outputs.NEW_TAG }}"
 
             - name: Build and tag Docker image
               run: |
