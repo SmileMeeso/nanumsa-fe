@@ -84,6 +84,9 @@ jobs:
             - name: Commit changes
               run: |
                   ls -l
+                  echo "$folder_name/deployment.yaml"
+                  cat $folder_name/deployment.yaml
+
                   git config user.name ${{ secrets.USER_NAME }}
                   git config user.email ${{ secrets.EMAIL }}
                   git commit -m "Update Kustomization with new version: ${{ inputs.new-version }}" || echo "No changes to commit."
