@@ -67,6 +67,10 @@ jobs:
             - name: Apply Kustomization
               run: |
                   cd nanumsa-k8s
+
+                  image_name="${{ inputs.image-name }}"
+                  folder_name="${image_name/nanumsa-/}"
+
                   kubectl apply -k .
                   echo "$folder_name/deployment.yaml"
                   cat $folder_name/deployment.yaml
