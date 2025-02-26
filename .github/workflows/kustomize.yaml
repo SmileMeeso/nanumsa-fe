@@ -21,11 +21,6 @@ jobs:
             - name: Setup Kustomize
               uses: imranismail/setup-kustomize@v1
 
-            - name: log
-              run: |
-                  echo "image-name: ${{ inputs.image-name }}"
-                  echo "new-version: ${{ inputs.new-version }}"
-
             - name: Checkout Kustomize repository
               uses: actions/checkout@v2
 
@@ -35,45 +30,28 @@ jobs:
                   repository: SmileMeeso/nanumsa-k8s
                   path: nanumsa-k8s
 
-            - name: Create kustomization.yaml
+            - name: Edit Update Image Tag in Kustomization
               run: |
-                  cd nanumsa-k8s
-
-                  image_name="${{ inputs.image-name }}"
+                  image_name="${{ secrets.DOCKERHUB_USERNAME }}/${{ inputs.image-name }}"
                   folder_name="${image_name/nanumsa-/}"
 
-                  echo "resources:" > kustomization.yaml
-                  echo "  - $folder_name/deployment.yaml" >> kustomization.yaml
-                  echo "patchesStrategicMerge:" >> kustomization.yaml
-                  echo "  - patch.yaml" >> kustomization.yaml
-                  echo "Created kustomization.yaml"
-                  cat kustomization.yaml
+                  cd $folder_name
 
-            - name: Create patch.yaml
+                  yq eval ".images[0].name = \"${image_name}:${new-version}\"" -i $folder_name/kustomization.yaml
+
+            - name: Kustomize Build"
+              uses: karancode/kustomize-github-action@master
+              with:
+                  kustomize_version: "${{ inputs.new-version }}"
+                  kustomize_build_dir: "./${image_name/nanumsa-/}"
+                  kustomize_comment: true
+                  kustomize_output_file: "./${image_name/nanumsa-/}/kustomized-deployment.yaml"
+              env:
+                  GITHUB_ACCESS_TOKEN: ${{ secrets.PUSH_K8S_TOKEN }}
+
+            - name: Change Deployment to New Deployment File
               run: |
-                  cd nanumsa-k8s
-                  echo "apiVersion: apps/v1" > patch.yaml
-                  echo "kind: Deployment" >> patch.yaml
-                  echo "metadata:" >> patch.yaml
-                  echo "  name: ${{ inputs.image-name }}" >> patch.yaml
-                  echo "spec:" >> patch.yaml
-                  echo "  template:" >> patch.yaml
-                  echo "    metadata:" >> patch.yaml
-                  echo "      annotations:" >> patch.yaml
-                  echo "        version: '${{ inputs.new-version }}'" >> patch.yaml
-                  cat patch.yaml
-                  echo "Created patch.yaml"
-
-            - name: Apply Kustomization
-              run: |
-                  cd nanumsa-k8s
-
-                  image_name="${{ inputs.image-name }}"
-                  folder_name="${image_name/nanumsa-/}"
-
-                  kubectl apply -k .
-                  echo "$folder_name/deployment.yaml"
-                  cat $folder_name/deployment.yaml
+                  mv ./${image_name/nanumsa-/}/deployment.yaml ./${image_name/nanumsa-/}/kustomized-deployment.yaml
 
             - uses: actions/checkout@v2
               with:
@@ -93,7 +71,6 @@ jobs:
 
                   git config user.name ${{ secrets.USER_NAME }}
                   git config user.email ${{ secrets.EMAIL }}
-                  git status
                   git commit -m "Update Kustomization with new version: ${{ inputs.new-version }}" || echo "No changes to commit."
                   git push origin main
 
