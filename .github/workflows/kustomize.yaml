@@ -32,6 +32,8 @@ jobs:
 
             - name: Edit Update Image Tag in Kustomization
               run: |
+                  ls -l
+
                   image_name="${{ inputs.image-name }}"
                   modified_name=${image_name/nanumsa-/}
                   combined_path="./nanumsa-k8s/${modified_name}"
