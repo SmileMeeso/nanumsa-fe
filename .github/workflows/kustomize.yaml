@@ -32,12 +32,12 @@ jobs:
 
             - name: Edit Update Image Tag in Kustomization
               run: |
-                  ls -l ./nanumsa-k8s/
+                  ls -l
                   image_name="${{ secrets.DOCKERHUB_USERNAME }}/${{ inputs.image-name }}"
-                  extracted_name=${image_name/nanumsa-/}
-                  folder_name="./nanumsa-k8s/${image_name/nanumsa-/}"
+                  extracted_name=${inputs.image-name/nanumsa-/}
+                  folder_name="./nanumsa-k8s/$extracted_name"
 
-                  echo "Modified: ${folder_name}"
+                  echo "Modified: ${extracted_name}"
 
                   cd $folder_name
 
