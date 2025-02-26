@@ -109,12 +109,6 @@ jobs:
                   echo "NEW_TAG=$new_version" >> $GITHUB_OUTPUT
                   echo "new_version=$new_version"
 
-            - name: Set new version output variable
-              run: |
-                  echo "NEW_TAG=$new_version" >> $GITHUB_OUTPUT
-                  echo "NEW_TAG=$new_version"
-                  echo "new_version=${{ steps.calculate-version.outputs.NEW_TAG }}"
-
             - name: Build and tag Docker image
               run: |
                   docker build -t smilemeeso/nanumsa-front:latest -t smilemeeso/nanumsa-front:${{ env.new_version }} .
@@ -138,4 +132,4 @@ jobs:
         secrets: inherit
         with:
             image-name: "nanumsa-front"
-            new-version: ${{ needs.build-and-push-image.outputs.NEW_TAG }}
+            new-version: ${{ needs.calculate-version.outputs.NEW_TAG }}
