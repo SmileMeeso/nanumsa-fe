@@ -33,7 +33,7 @@ jobs:
             - name: Edit Update Image Tag in Kustomization
               run: |
                   image_name="${{ secrets.DOCKERHUB_USERNAME }}/${{ inputs.image-name }}"
-                  folder_name="${image_name/nanumsa-/}"
+                  folder_name="nanumsa-k8s/${image_name/nanumsa-/}"
 
                   cd $folder_name
 
@@ -51,7 +51,7 @@ jobs:
 
             - name: Change Deployment to New Deployment File
               run: |
-                  mv ./${image_name/nanumsa-/}/deployment.yaml ./${image_name/nanumsa-/}/kustomized-deployment.yaml
+                  mv ./nanumsa-k8s/${image_name/nanumsa-/}/deployment.yaml ./nanumsa-k8s/${image_name/nanumsa-/}/kustomized-deployment.yaml
 
             - uses: actions/checkout@v2
               with:
