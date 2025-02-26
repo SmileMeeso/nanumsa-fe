@@ -37,7 +37,7 @@ jobs:
                   extracted_name=${image_name/nanumsa-/}
                   folder_name="./nanumsa-k8s/${image_name/nanumsa-/}"
 
-                  echo "Modified: ${extracted_name}"
+                  echo "Modified: ${folder_name}"
 
                   cd $folder_name
 
