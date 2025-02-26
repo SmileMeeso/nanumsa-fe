@@ -32,13 +32,11 @@ jobs:
 
             - name: Edit Update Image Tag in Kustomization
               run: |
-                  ls -l
-
                   image_name="${{ inputs.image-name }}"
                   modified_name=${image_name/nanumsa-/}
                   combined_path="./nanumsa-k8s/${modified_name}"
 
-                  cd $combined_path
+                  ls -l  $combined_path
 
                   yq eval ".images[0].name = \"${image_name}:${new-version}\"" -i $combined_path/kustomization.yaml
 
