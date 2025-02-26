@@ -68,6 +68,8 @@ jobs:
               run: |
                   cd nanumsa-k8s
                   kubectl apply -k .
+                  echo "$folder_name/deployment.yaml"
+                  cat $folder_name/deployment.yaml
 
             - uses: actions/checkout@v2
               with:
