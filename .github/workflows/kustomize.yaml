@@ -59,7 +59,7 @@ jobs:
                   combined_path="./nanumsa-k8s/${modified_name}"
                   cd "$combined_path"
 
-                  yq select(document_index == 1) ./kustomized-all.yaml > ./kustomized-development.yaml
+                  yq 'select(document_index == 1)' ./kustomized-all.yaml > kustomized-development.yaml
                   cat kustomized-development.yaml
 
                   kubectl apply -f ./kustomized-development.yaml
