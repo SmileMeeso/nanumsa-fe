@@ -39,7 +39,7 @@ jobs:
 
                   echo "new version: ${{ inputs.new-version }}"
 
-                  kustomize edit set image ${{ inputs.image_name }}=${{ secrets.DOCKERHUB_USERNAME }}/${{ inputs.image_name }}:${{ inputs.new-version }}
+                  kustomize edit set image ${{ inputs.image_name }}=${{ env.DOCKER_HUB_REPOSITORY_NAME }}/${{ inputs.image_name }}:${{ inputs.new-version }}
                   kustomize edit set namespace default
 
             - name: Kustomize Build
@@ -59,7 +59,7 @@ jobs:
                   combined_path="./nanumsa-k8s/${modified_name}"
                   cd "$combined_path"
 
-                  yq 'select(document_index == 1)' ./kustomized-all.yaml > kustomized-development.yaml
+                  yq eval 'select(di == 1)' ./kustomized-all.yaml > kustomized-development.yaml
                   cat kustomized-development.yaml
 
                   kubectl apply -f ./kustomized-development.yaml
