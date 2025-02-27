@@ -47,9 +47,8 @@ jobs:
                   combined_path="./nanumsa-k8s/${modified_name}"
 
                   cd "$combined_path"
-                  touch "${combined_path}/kustomized-deployment.yaml"
 
-                  kustomize build "${combined_path}" > "${combined_path}/kustomized-deployment.yaml"
+                  kustomize build . > "kustomized-deployment.yaml"
 
             - name: Change Deployment to New Deployment File
               run: |
