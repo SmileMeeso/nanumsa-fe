@@ -59,6 +59,8 @@ jobs:
                   combined_path="./nanumsa-k8s/${modified_name}"
                   cd "$combined_path"
 
+                  ls -l
+
                   yq eval 'select(di == 1)' ./kustomized-all.yaml > kustomized-development.yaml
                   cat kustomized-development.yaml
 
@@ -70,6 +72,8 @@ jobs:
                   modified_name=${image_name/nanumsa-/}
                   combined_path="./nanumsa-k8s/${modified_name}"
                   cd "$combined_path"
+
+                  ls -l
 
                   mv kustomized-deployment.yaml deployment.yaml
                   cat deployment.yaml
