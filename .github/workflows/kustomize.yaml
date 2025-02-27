@@ -70,7 +70,7 @@ jobs:
                   combined_path="./nanumsa-k8s/${modified_name}"
                   cd "$combined_path"
 
-                  mv kustomized-output.yaml deployment.yaml
+                  mv kustomized-deployment.yaml deployment.yaml
                   cat deployment.yaml
 
             - uses: actions/checkout@v2
