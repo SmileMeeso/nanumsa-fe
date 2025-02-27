@@ -32,7 +32,7 @@ jobs:
 
             - name: Update image in kustomization
               run: |
-                  kustomize edit set image smilemeeso/nanumsa-fe=${{ inputs.image_name }}:${{ inputs.new-version }}
+                  kustomize edit set image ${{ inputs.image_name }}=${{ secrets.DOCKERHUB_USERNAME }}/${{ inputs.image_name }}:${{ inputs.new-version }}
 
             - name: Kustomize Build
               run: |
