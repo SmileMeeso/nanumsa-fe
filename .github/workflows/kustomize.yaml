@@ -72,12 +72,6 @@ jobs:
 
                   mv kustomized-deployment.yaml deployment.yaml
 
-            - uses: actions/checkout@v2
-              with:
-                  repository: SmileMeeso/nanumsa-k8s
-                  ref: "main"
-                  token: ${{ secrets.PUSH_K8S_TOKEN }}
-
             - name: Commit changes
               run: |
                   image_name="${{ inputs.image-name }}"
