@@ -36,7 +36,7 @@ jobs:
 
             - name: Kustomize Build
               run: |
-                  kustomize build "./nanumsa-k8s/${{ github.event.inputs.image_name/ nanumsa-/ }}" > "./nanumsa-k8s/${{ github.event.inputs.image_name/ nanumsa-/ }}/kustomized-deployment.yaml"
+                  kustomize build "./nanumsa-k8s/${{ inputs.image_name/ nanumsa-/ }}" > "./nanumsa-k8s/${{ inputs.image_name/ nanumsa-/ }}/kustomized-deployment.yaml"
 
             - name: Change Deployment to New Deployment File
               run: |
