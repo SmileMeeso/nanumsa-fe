@@ -32,6 +32,12 @@ jobs:
 
             - name: Update image in kustomization
               run: |
+                  image_name="${{ inputs.image-name }}"
+                  modified_name=${image_name/nanumsa-/}
+                  combined_path="./nanumsa-k8s/${modified_name}"
+
+                  cd "$combined_path"
+
                   kustomize edit set image ${{ inputs.image_name }}=${{ secrets.DOCKERHUB_USERNAME }}/${{ inputs.image_name }}:${{ inputs.new-version }}
 
             - name: Kustomize Build
@@ -39,6 +45,8 @@ jobs:
                   image_name="${{ inputs.image-name }}"
                   modified_name=${image_name/nanumsa-/}
                   combined_path="./nanumsa-k8s/${modified_name}"
+
+                  cd "$combined_path"
 
                   kustomize build "${combined_path}" > "${combined_path}/kustomized-deployment.yaml"
 
