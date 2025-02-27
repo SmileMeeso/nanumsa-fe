@@ -61,10 +61,10 @@ jobs:
 
                   ls -l
 
-                  yq eval 'select(di == 1)' ./kustomized-all.yaml > kustomized-development.yaml
-                  cat kustomized-development.yaml
+                  yq eval 'select(di == 1)' ./kustomized-all.yaml > kustomized-deployment.yaml
+                  cat kustomized-deployment.yaml
 
-                  kubectl apply -f ./kustomized-development.yaml
+                  kubectl apply -f ./kustomized-deployment.yaml
 
             - name: Change Deployment to New Deployment File
               run: |
