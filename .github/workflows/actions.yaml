@@ -86,12 +86,29 @@ jobs:
                   echo "Latest version: $latest_version"
                   echo "latest=$latest_version" >> $GITHUB_ENV
 
+            - name: Set version-update variable
+              id: set_version
+              run: |
+                  if [[ "${{ github.event_name }}" == "push" ]]; then
+                    if [[ "${{ github.ref }}" == "refs/heads/main" ]]; then
+                      echo "VERSION_UPDATE=major" >> $GITHUB_ENV
+                    elif [[ "${{ github.ref }}" == "refs/heads/dev" ]]; then
+                      echo "VERSION_UPDATE=minor" >> $GITHUB_ENV
+                    elif [[ "${{ github.ref }}" == "refs/heads/feature/"* ]]; then
+                      echo "VERSION_UPDATE=patch" >> $GITHUB_ENV
+                    else
+                      echo "VERSION_UPDATE=patch" >> $GITHUB_ENV
+                    fi
+                  else
+                    echo "VERSION_UPDATE=${{ github.event.inputs.version-update }}" >> $GITHUB_ENV
+                  fi
+
             - name: Calculate new version
               id: calculate-version
               run: |
                   IFS='.' read -r major minor patch <<< "${{ env.latest }}"
-                  echo "inputs.version-update: ${{ inputs.version-update }}"
-                  case "${{ inputs.version-update }}" in
+                  echo "env.VERSION_UPDATE: ${{ env.VERSION_UPDATE }}"
+                  case "${{ env.VERSION_UPDATE }}" in
                     patch)
                       patch=$((patch + 1))
                       ;;
