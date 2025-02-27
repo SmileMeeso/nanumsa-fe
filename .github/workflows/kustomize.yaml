@@ -38,7 +38,7 @@ jobs:
                   cd "$combined_path"
 
                   kustomize edit set image ${{ inputs.image_name }}=smilemeeso/${{ inputs.image_name }}:${{ inputs.new-version }}
-                  kustomize edit set annotation { version: ${{ inputs.new-version }} }
+                  kustomize edit set annotation version: ${{ inputs.new-version }}
                   kustomize edit set namespace default
 
             - name: Kustomize Build
