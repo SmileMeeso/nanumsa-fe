@@ -40,6 +40,7 @@ jobs:
                   echo "new version: ${{ inputs.new-version }}"
 
                   kustomize edit set image ${{ inputs.image_name }}=${{ secrets.DOCKERHUB_USERNAME }}/${{ inputs.image_name }}:${{ inputs.new-version }}
+                  kustomize edit set namespace default
 
             - name: Kustomize Build
               run: |
