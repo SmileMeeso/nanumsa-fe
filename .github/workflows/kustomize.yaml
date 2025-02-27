@@ -39,7 +39,7 @@ jobs:
 
                   echo "new version: ${{ inputs.new-version }}"
 
-                  kustomize edit set image ${{ inputs.image_name }}=${{ env.DOCKER_HUB_REPOSITORY_NAME }}/${{ inputs.image_name }}:${{ inputs.new-version }}
+                  kustomize edit set image ${{ inputs.image_name }}=smilemeeso/${{ inputs.image_name }}:${{ inputs.new-version }}
                   kustomize edit set namespace default
 
             - name: Kustomize Build
