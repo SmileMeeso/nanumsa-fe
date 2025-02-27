@@ -50,7 +50,6 @@ jobs:
                   cd "$combined_path"
 
                   kustomize build . > kustomized-all.yaml
-                  cat kustomized-all.yaml
 
             - name: Apply Deployment
               run: |
