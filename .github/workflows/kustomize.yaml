@@ -62,7 +62,7 @@ jobs:
                   yq -sy '.[1]' ./kustomized-all.yaml > ./kustomized-development.yaml
                   cat kustomized-development.yaml
 
-                  kubectl apply -f <(yq eval '.[1]' ./kustomized-all.yaml)
+                  kubectl apply -f <(yq select(document_index == 1) ./kustomized-all.yaml)
 
             - name: Change Deployment to New Deployment File
               run: |
@@ -71,7 +71,6 @@ jobs:
                   combined_path="./nanumsa-k8s/${modified_name}"
                   cd "$combined_path"
 
-                  yq eval '.[1]' ./kustomized-all.yaml > ./kustomized-development.yaml
                   mv kustomized-deployment.yaml deployment.yaml
                   cat deployment.yaml
 
