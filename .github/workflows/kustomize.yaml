@@ -35,7 +35,6 @@ jobs:
                   image_name="${{ inputs.image-name }}"
                   modified_name=${image_name/nanumsa-/}
                   combined_path="./nanumsa-k8s/${modified_name}"
-
                   cd "$combined_path"
 
                   kustomize edit set image ${{ inputs.image_name }}=${{ secrets.DOCKERHUB_USERNAME }}/${{ inputs.image_name }}:${{ inputs.new-version }}
@@ -45,21 +44,28 @@ jobs:
                   image_name="${{ inputs.image-name }}"
                   modified_name=${image_name/nanumsa-/}
                   combined_path="./nanumsa-k8s/${modified_name}"
-
                   cd "$combined_path"
 
                   kustomize build . > kustomized-deployment.yaml
-                  cat kustomized-deployment.yaml
+
+            - name: Apply Deployment
+              run: |
+                  image_name="${{ inputs.image-name }}"
+                  modified_name=${image_name/nanumsa-/}
+                  combined_path="./nanumsa-k8s/${modified_name}"
+                  cd "$combined_path"
+
+                  kubectl apply -f <(yq eval 'select(.kind == "Deployment")' ./kustomized-output.yaml)
 
             - name: Change Deployment to New Deployment File
               run: |
                   image_name="${{ inputs.image-name }}"
                   modified_name=${image_name/nanumsa-/}
                   combined_path="./nanumsa-k8s/${modified_name}"
-
                   cd "$combined_path"
 
-                  mv kustomized-deployment.yaml deployment.yaml
+                  mv kustomized-output.yaml deployment.yaml
+                  cat deployment.yaml
 
             - uses: actions/checkout@v2
               with:
