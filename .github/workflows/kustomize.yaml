@@ -40,6 +40,7 @@ jobs:
                   echo "new version: ${{ inputs.new-version }}"
 
                   kustomize edit set image ${{ inputs.image_name }}=smilemeeso/${{ inputs.image_name }}:${{ inputs.new-version }}
+                  kustomize edit set annotation version=${{ inputs.new-version }}
                   kustomize edit set namespace default
 
             - name: Kustomize Build
@@ -59,8 +60,6 @@ jobs:
                   combined_path="./nanumsa-k8s/${modified_name}"
                   cd "$combined_path"
 
-                  ls -l
-
                   yq eval 'select(di == 1)' ./kustomized-all.yaml > kustomized-deployment.yaml
                   cat kustomized-deployment.yaml
 
@@ -73,8 +72,6 @@ jobs:
                   combined_path="./nanumsa-k8s/${modified_name}"
                   cd "$combined_path"
 
-                  ls -l
-
                   mv kustomized-deployment.yaml deployment.yaml
                   cat deployment.yaml
 
@@ -86,8 +83,6 @@ jobs:
 
             - name: Commit changes
               run: |
-                  ls -l
-
                   image_name="${{ inputs.image-name }}"
                   folder_name="${image_name/nanumsa-/}"
 
