@@ -82,6 +82,7 @@ jobs:
               run: |
                   image_name="${{ inputs.image-name }}"
                   combined_path="./nanumsa-k8s"
+                  cd "$combined_path"
 
                   git config user.name ${{ secrets.USER_NAME }}
                   git config user.email ${{ secrets.EMAIL }}
