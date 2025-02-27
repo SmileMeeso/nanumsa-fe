@@ -59,7 +59,7 @@ jobs:
 
                   cd "$combined_path"
 
-                  mv $combined_path/kustomized-deployment.yaml $combined_path/deployment.yaml
+                  mv kustomized-deployment.yaml deployment.yaml
 
             - uses: actions/checkout@v2
               with:
