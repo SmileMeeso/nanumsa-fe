@@ -30,23 +30,13 @@ jobs:
                   repository: SmileMeeso/nanumsa-k8s
                   path: nanumsa-k8s
 
-            - name: Edit Update Image Tag in Kustomization
+            - name: Update image in kustomization
               run: |
-                  image_name="${{ inputs.image-name }}"
-                  modified_name=${image_name/nanumsa-/}
-                  combined_path="./nanumsa-k8s/${modified_name}"
+                  kustomize edit set image smilemeeso/nanumsa-fe=${{ inputs.image_name }}:${{ inputs.new-version }}
 
-                  yq eval ".images[0].name = \"${image_name}:${new-version}\"" -i $combined_path/kustomization.yaml
-
-            - name: Kustomize Build"
-              uses: karancode/kustomize-github-action@master
-              with:
-                  kustomize_version: "${{ inputs.new-version }}"
-                  kustomize_build_dir: "./nanumsa-k8s/${ image_name/nanumsa-/ }"
-                  kustomize_comment: true
-                  kustomize_output_file: "./nanumsa-k8s/${ image_name/nanumsa-/ }/kustomized-deployment.yaml"
-              env:
-                  GITHUB_ACCESS_TOKEN: ${{ secrets.PUSH_K8S_TOKEN }}
+            - name: Kustomize Build
+              run: |
+                  kustomize build "./nanumsa-k8s/${{ github.event.inputs.image_name/ nanumsa-/ }}" > "./nanumsa-k8s/${{ github.event.inputs.image_name/ nanumsa-/ }}/kustomized-deployment.yaml"
 
             - name: Change Deployment to New Deployment File
               run: |
