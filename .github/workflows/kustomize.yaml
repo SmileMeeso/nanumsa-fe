@@ -82,10 +82,11 @@ jobs:
             - name: Commit changes
               run: |
                   image_name="${{ inputs.image-name }}"
-                  folder_name="${image_name/nanumsa-/}"
+                  modified_name=${image_name/nanumsa-/}
+                  combined_path="./nanumsa-k8s/${modified_name}"
+                  cd "$combined_path"
 
-                  echo "$folder_name/deployment.yaml"
-                  cat $folder_name/deployment.yaml
+                  cat deployment.yaml
 
                   git config user.name ${{ secrets.USER_NAME }}
                   git config user.email ${{ secrets.EMAIL }}
