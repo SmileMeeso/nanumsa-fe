@@ -36,6 +36,7 @@ jobs:
 
             - name: Kustomize Build
               run: |
+                  image_name="${{ inputs.image-name }}"
                   modified_name=${image_name/nanumsa-/}
                   combined_path="./nanumsa-k8s/${modified_name}"
 
