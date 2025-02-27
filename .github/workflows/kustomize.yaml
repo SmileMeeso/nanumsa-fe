@@ -37,6 +37,8 @@ jobs:
                   combined_path="./nanumsa-k8s/${modified_name}"
                   cd "$combined_path"
 
+                  echo "new version: ${{ inputs.new-version }}"
+
                   kustomize edit set image ${{ inputs.image_name }}=${{ secrets.DOCKERHUB_USERNAME }}/${{ inputs.image_name }}:${{ inputs.new-version }}
 
             - name: Kustomize Build
@@ -56,7 +58,9 @@ jobs:
                   combined_path="./nanumsa-k8s/${modified_name}"
                   cd "$combined_path"
 
-                  kubectl apply -f <(yq eval 'select(.kind == "Deployment")' ./kustomized-output.yaml)
+                  cat kustomized-deployment.yaml
+
+                  kubectl apply -f <(yq eval 'select(.kind == "Deployment")' ./kustomized-deployment.yaml)
 
             - name: Change Deployment to New Deployment File
               run: |
