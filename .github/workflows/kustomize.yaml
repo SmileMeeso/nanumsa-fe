@@ -37,10 +37,8 @@ jobs:
                   combined_path="./nanumsa-k8s/${modified_name}"
                   cd "$combined_path"
 
-                  echo "new version: ${{ inputs.new-version }}"
-
                   kustomize edit set image ${{ inputs.image_name }}=smilemeeso/${{ inputs.image_name }}:${{ inputs.new-version }}
-                  kustomize edit set annotation "{version: ${{ inputs.new-version }}}"
+                  kustomize edit set annotation { version: ${{ inputs.new-version }} }
                   kustomize edit set namespace default
 
             - name: Kustomize Build
