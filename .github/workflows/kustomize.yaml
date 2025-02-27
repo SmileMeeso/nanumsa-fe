@@ -57,7 +57,9 @@ jobs:
                   modified_name=${image_name/nanumsa-/}
                   combined_path="./nanumsa-k8s/${modified_name}"
 
-                  mv $combined_path/deployment.yaml $combined_path/kustomized-deployment.yaml
+                  cd "$combined_path"
+
+                  mv $combined_path/kustomized-deployment.yaml $combined_path/deployment.yaml
 
             - uses: actions/checkout@v2
               with:
