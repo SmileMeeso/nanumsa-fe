@@ -16,7 +16,7 @@ on:
             #         - production
             version-update:
                 description: "version-update"
-                required: false
+                required: true
                 default: "patch"
                 type: choice
                 options:
@@ -90,6 +90,7 @@ jobs:
               id: calculate-version
               run: |
                   IFS='.' read -r major minor patch <<< "${{ env.latest }}"
+                  echo "inputs.version-update: ${{ inputs.version-update }}"
                   case "${{ inputs.version-update }}" in
                     patch)
                       patch=$((patch + 1))
