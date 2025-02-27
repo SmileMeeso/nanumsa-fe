@@ -3,7 +3,9 @@ name: nanumsa CI
 on:
     push:
         branches:
-            - "*"
+            - main
+            - dev
+            - feature/*
     workflow_dispatch:
         inputs:
             # environment:
